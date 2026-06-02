@@ -2,7 +2,12 @@ import React, { useState, useCallback } from 'react';
 import CurveCard from './components/CurveCard.jsx';
 import CurveChart from './components/CurveChart.jsx';
 import { CURVE_COLORS, pickColor } from './lib/colors.js';
-import { autoCurveName } from './lib/calc.js';
+import { autoCurveName, findEntry, getGamme } from './lib/calc.js';
+
+const fmtCoef = (v) =>
+  v == null
+    ? '—'
+    : new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 6 }).format(v);
 
 let _id = 0;
 const nextId = () => `c${++_id}`;
@@ -154,19 +159,63 @@ export default function App() {
 
         {/* Chart */}
         <main className="flex-1 min-w-0 p-4 flex flex-col gap-3 min-h-0">
-          {/* Equation reminder */}
+          {/* Coefficients reminder: a, b, c per curve */}
           <div className="shrink-0 bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 shadow-lg shadow-violet-500/10">
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-              <div className="text-xs uppercase tracking-wider text-slate-400 font-semibold">
-                Formule
-              </div>
-              <code className="text-sm text-slate-100 font-mono">
-                Curatif = (km² × <span className="text-blue-300">a</span>) + (km × <span className="text-blue-300">b</span>) + <span className="text-blue-300">c</span> + (heures_PMT × 1,21) − (13 × durée)
-              </code>
-              <span className="text-[11px] text-slate-500">
-                km = km/mois · <span className="text-blue-300">c</span> = 0 si la gamme n'a pas de coefficient c · plafond 800 000 km / contrat
-              </span>
+            <div className="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-2">
+              Coefficients a / b / c
             </div>
+            {curves.filter((c) => c.visible).length === 0 ? (
+              <p className="text-xs text-slate-500">Aucune courbe visible.</p>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="text-[11px] uppercase tracking-wide text-slate-500 text-left">
+                      <th className="font-medium pb-1 pr-4">Courbe</th>
+                      <th className="font-medium pb-1 pr-6 text-right font-mono">a</th>
+                      <th className="font-medium pb-1 pr-6 text-right font-mono">b</th>
+                      <th className="font-medium pb-1 text-right font-mono">c</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {curves
+                      .filter((c) => c.visible)
+                      .map((c) => {
+                        const g = getGamme(c.gamme);
+                        const entry = findEntry(c.gamme, {
+                          classification: c.classification,
+                          silhouette: c.silhouette,
+                          poc: c.poc,
+                          duree: c.duree,
+                        });
+                        const hasC = g && g.has_c;
+                        return (
+                          <tr key={c.id} className="border-t border-white/5">
+                            <td className="py-1 pr-4">
+                              <span className="inline-flex items-center gap-2 min-w-0">
+                                <span
+                                  className="inline-block w-2.5 h-2.5 rounded-full shrink-0"
+                                  style={{ backgroundColor: c.color }}
+                                />
+                                <span className="text-slate-200 truncate">{c.name}</span>
+                              </span>
+                            </td>
+                            <td className="py-1 pr-6 text-right font-mono text-slate-100">
+                              {entry ? fmtCoef(entry.a) : '—'}
+                            </td>
+                            <td className="py-1 pr-6 text-right font-mono text-slate-100">
+                              {entry ? fmtCoef(entry.b) : '—'}
+                            </td>
+                            <td className="py-1 text-right font-mono text-slate-100">
+                              {entry ? (hasC ? fmtCoef(entry.c) : '0') : '—'}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </div>
           <div className="flex-1 min-h-0 w-full bg-white/[0.02] border border-white/10 rounded-2xl p-4 shadow-xl shadow-violet-500/10">
             <CurveChart curves={curves} onToggleVisible={toggleVisible} />
