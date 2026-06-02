@@ -43,20 +43,19 @@ function computeDeltas(rows, visible) {
 
 function downloadCsv(filename, rows, deltas, visible) {
   const ref = visible[0];
+  const nonRef = visible.slice(1);
   const header = [
     'Km/mois',
     'Km/an',
     ...visible.map((c) => c.name),
-    ...visible.map((c) =>
-      c.id === ref.id ? `${c.name} (réf.)` : `${c.name} Δ % vs ${ref.name}`
-    ),
+    ...nonRef.map((c) => `${c.name} Δ % vs ${ref.name}`),
   ];
   const lines = [header.join(';')];
   for (let i = 0; i < rows.length; i++) {
     const r = rows[i];
     const d = deltas[i];
     const values = visible.map((c) => (r[c.id] == null ? '' : Math.round(r[c.id])));
-    const pcts = visible.map((c) => {
+    const pcts = nonRef.map((c) => {
       const v = d[c.id];
       // Excel FR: decimal comma
       return v == null || !isFinite(v) ? '' : v.toFixed(2).replace('.', ',');
@@ -153,27 +152,24 @@ export default function CurveTable({ curves }) {
                       </div>
                     </th>
                   ))}
-                  {visibleCurves.map((c, i) => {
-                    const isRef = i === 0;
-                    return (
-                      <th
-                        key={`p-${c.id}`}
-                        className={`px-4 py-2 text-right text-xs uppercase tracking-wider text-slate-400 font-semibold border-b border-white/10 whitespace-nowrap ${
-                          i === 0 ? 'border-l border-white/10' : ''
-                        }`}
-                      >
-                        <div className="inline-flex items-center gap-2 justify-end">
-                          <span
-                            className="inline-block w-2.5 h-2.5 rounded-full"
-                            style={{ backgroundColor: c.color }}
-                          />
-                          <span className="text-slate-200 normal-case tracking-normal font-medium">
-                            {isRef ? 'Réf.' : `Δ % vs ${visibleCurves[0].name}`}
-                          </span>
-                        </div>
-                      </th>
-                    );
-                  })}
+                  {visibleCurves.slice(1).map((c, idx) => (
+                    <th
+                      key={`p-${c.id}`}
+                      className={`px-4 py-2 text-right text-xs uppercase tracking-wider text-slate-400 font-semibold border-b border-white/10 whitespace-nowrap ${
+                        idx === 0 ? 'border-l border-white/10' : ''
+                      }`}
+                    >
+                      <div className="inline-flex items-center gap-2 justify-end">
+                        <span
+                          className="inline-block w-2.5 h-2.5 rounded-full"
+                          style={{ backgroundColor: c.color }}
+                        />
+                        <span className="text-slate-200 normal-case tracking-normal font-medium">
+                          Δ % vs {visibleCurves[0].name}
+                        </span>
+                      </div>
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody>
@@ -193,7 +189,7 @@ export default function CurveTable({ curves }) {
                         {fmtEur(r[c.id])}
                       </td>
                     ))}
-                    {visibleCurves.map((c, j) => {
+                    {visibleCurves.slice(1).map((c, j) => {
                       const v = deltas[i][c.id];
                       const cls =
                         v == null
