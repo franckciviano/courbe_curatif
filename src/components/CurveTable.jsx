@@ -195,9 +195,9 @@ export default function CurveTable({ curves }) {
                         v == null
                           ? 'text-slate-600'
                           : v > 0
-                          ? 'text-rose-300'
-                          : v < 0
                           ? 'text-emerald-300'
+                          : v < 0
+                          ? 'text-rose-300'
                           : 'text-slate-400';
                       return (
                         <td
