@@ -1,5 +1,63 @@
 import React, { useMemo, useState } from 'react';
+import * as XLSX from 'xlsx';
 import { DATA, getGammeNames, getClassificationLabel, isLinearGamme } from '../lib/calc.js';
+
+// Excel-safe sheet name: max 31 chars, no : \ / ? * [ ]
+function safeSheetName(name) {
+  return name.replace(/[:\\/?*[\]]/g, ' ').slice(0, 31).trim() || 'Sheet';
+}
+
+function exportAllCoefficients() {
+  const wb = XLSX.utils.book_new();
+  for (const name of getGammeNames()) {
+    const g = DATA.gammes[name];
+    const cf = g.classification_field;
+    const linear = isLinearGamme(g);
+    const cfLabel = cf === 'type' ? 'Type' : 'Moteur';
+    const rows = g.entries.map((e) => ({
+      [cfLabel]: e[cf],
+      Silhouette: e.silhouette,
+      POC: e.poc,
+      'Durée (mois)': e.duree,
+      a: e.a,
+      b: e.b,
+      c: linear ? 'n/a' : g.has_c ? e.c : 0,
+      Code: e.code,
+    }));
+    const ws = XLSX.utils.json_to_sheet(rows, {
+      header: [cfLabel, 'Silhouette', 'POC', 'Durée (mois)', 'a', 'b', 'c', 'Code'],
+    });
+    // Column widths
+    ws['!cols'] = [
+      { wch: 14 }, { wch: 12 }, { wch: 6 }, { wch: 12 },
+      { wch: 14 }, { wch: 14 }, { wch: 14 }, { wch: 24 },
+    ];
+    XLSX.utils.book_append_sheet(wb, ws, safeSheetName(name));
+  }
+
+  // Index sheet: summary per gamme
+  const summary = getGammeNames().map((name) => {
+    const g = DATA.gammes[name];
+    const linear = isLinearGamme(g);
+    return {
+      Gamme: name,
+      Classification: g.classification_field === 'type' ? 'Type' : 'Moteur',
+      'Coeff c': linear ? 'n/a' : g.has_c ? 'oui' : 'non',
+      Formule: linear
+        ? 'a·km + b + 1,21·PMT − 13·durée'
+        : `a·km² + b·km ${g.has_c ? '+ c ' : ''}+ 1,21·PMT − 13·durée`,
+      'Nb entrées': g.entries.length,
+    };
+  });
+  const wsSummary = XLSX.utils.json_to_sheet(summary);
+  wsSummary['!cols'] = [{ wch: 10 }, { wch: 14 }, { wch: 10 }, { wch: 50 }, { wch: 12 }];
+  XLSX.utils.book_append_sheet(wb, wsSummary, 'Résumé');
+  // Move the summary to the front
+  wb.SheetNames.unshift(wb.SheetNames.pop());
+
+  const today = new Date().toISOString().slice(0, 10);
+  XLSX.writeFile(wb, `coefficients_${today}.xlsx`);
+}
 
 const fmtCoef = (v) =>
   v == null
@@ -62,7 +120,22 @@ export default function CoefficientsView() {
     <div className="h-full w-full flex flex-col gap-3 min-h-0">
       {/* Gamme picker pills */}
       <div className="shrink-0 bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 shadow-lg shadow-violet-500/10">
-        <div className="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-2">Gamme</div>
+        <div className="flex items-center justify-between mb-2">
+          <div className="text-xs uppercase tracking-wider text-slate-400 font-semibold">Gamme</div>
+          <button
+            type="button"
+            onClick={exportAllCoefficients}
+            className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-blue-500 to-violet-500 hover:from-blue-400 hover:to-violet-400 text-white font-medium text-xs shadow-lg shadow-violet-500/30 transition-all duration-200 inline-flex items-center gap-2"
+            title="Génère un classeur Excel avec un onglet par gamme et un onglet Résumé"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Exporter Excel (toutes gammes)
+          </button>
+        </div>
         <div className="flex flex-wrap gap-2">
           {gammeNames.map((name) => {
             const g = DATA.gammes[name];
