@@ -16,31 +16,40 @@ const fmtPct = (v) =>
       new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(v) +
       ' %';
 
-// Per-row variation vs previous row, per curve. null for first row or when
-// either value is missing / previous value is 0.
+// Per-row variation vs the first visible curve (reference) at the same km.
+// Reference column is always null. Null also when ref or current value
+// is missing, or the reference value is 0.
 function computeDeltas(rows, visible) {
   const deltas = rows.map(() => ({}));
-  for (const c of visible) {
-    let prev = null;
-    for (let i = 0; i < rows.length; i++) {
+  if (visible.length === 0) return deltas;
+  const ref = visible[0];
+  for (let i = 0; i < rows.length; i++) {
+    const refVal = rows[i][ref.id];
+    for (const c of visible) {
+      if (c.id === ref.id) {
+        deltas[i][c.id] = null;
+        continue;
+      }
       const cur = rows[i][c.id];
-      if (cur == null || prev == null || prev === 0) {
+      if (cur == null || refVal == null || refVal === 0) {
         deltas[i][c.id] = null;
       } else {
-        deltas[i][c.id] = ((cur - prev) / prev) * 100;
+        deltas[i][c.id] = ((cur - refVal) / refVal) * 100;
       }
-      prev = cur;
     }
   }
   return deltas;
 }
 
 function downloadCsv(filename, rows, deltas, visible) {
+  const ref = visible[0];
   const header = [
     'Km/mois',
     'Km/an',
     ...visible.map((c) => c.name),
-    ...visible.map((c) => `${c.name} (Δ %)`),
+    ...visible.map((c) =>
+      c.id === ref.id ? `${c.name} (réf.)` : `${c.name} Δ % vs ${ref.name}`
+    ),
   ];
   const lines = [header.join(';')];
   for (let i = 0; i < rows.length; i++) {
@@ -92,6 +101,11 @@ export default function CurveTable({ curves }) {
         <div className="text-sm text-slate-300">
           <span className="font-semibold text-slate-100">{visibleCurves.length}</span> courbe{visibleCurves.length > 1 ? 's' : ''} visible{visibleCurves.length > 1 ? 's' : ''} ·
           {' '}<span className="font-semibold text-slate-100">{rows.length}</span> lignes (pas de 200 km, jusqu'à 800 000 km / contrat)
+          {visibleCurves.length > 1 && (
+            <>
+              {' '}· Δ % calculé vs <span className="font-semibold text-slate-100">{visibleCurves[0].name}</span>
+            </>
+          )}
         </div>
         <button
           type="button"
@@ -139,22 +153,27 @@ export default function CurveTable({ curves }) {
                       </div>
                     </th>
                   ))}
-                  {visibleCurves.map((c, i) => (
-                    <th
-                      key={`p-${c.id}`}
-                      className={`px-4 py-2 text-right text-xs uppercase tracking-wider text-slate-400 font-semibold border-b border-white/10 whitespace-nowrap ${
-                        i === 0 ? 'border-l border-white/10' : ''
-                      }`}
-                    >
-                      <div className="inline-flex items-center gap-2 justify-end">
-                        <span
-                          className="inline-block w-2.5 h-2.5 rounded-full"
-                          style={{ backgroundColor: c.color }}
-                        />
-                        <span className="text-slate-200 normal-case tracking-normal font-medium">Δ %</span>
-                      </div>
-                    </th>
-                  ))}
+                  {visibleCurves.map((c, i) => {
+                    const isRef = i === 0;
+                    return (
+                      <th
+                        key={`p-${c.id}`}
+                        className={`px-4 py-2 text-right text-xs uppercase tracking-wider text-slate-400 font-semibold border-b border-white/10 whitespace-nowrap ${
+                          i === 0 ? 'border-l border-white/10' : ''
+                        }`}
+                      >
+                        <div className="inline-flex items-center gap-2 justify-end">
+                          <span
+                            className="inline-block w-2.5 h-2.5 rounded-full"
+                            style={{ backgroundColor: c.color }}
+                          />
+                          <span className="text-slate-200 normal-case tracking-normal font-medium">
+                            {isRef ? 'Réf.' : `Δ % vs ${visibleCurves[0].name}`}
+                          </span>
+                        </div>
+                      </th>
+                    );
+                  })}
                 </tr>
               </thead>
               <tbody>
