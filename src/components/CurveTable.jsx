@@ -130,94 +130,108 @@ export default function CurveTable({ curves }) {
           </div>
         ) : (
           <div className="flex-1 overflow-auto scroll-area">
-            <table className="w-full text-sm border-separate border-spacing-0">
-              <thead className="sticky top-0 bg-slate-900/95 backdrop-blur-sm z-10">
-                <tr>
-                  <th className="px-4 py-2 text-left text-xs uppercase tracking-wider text-slate-400 font-semibold border-b border-white/10">
-                    Km / mois
-                  </th>
-                  <th className="px-4 py-2 text-left text-xs uppercase tracking-wider text-slate-400 font-semibold border-b border-white/10">
-                    Km / an
-                  </th>
-                  {visibleCurves.map((c) => (
-                    <th
-                      key={`v-${c.id}`}
-                      className="px-4 py-2 text-right text-xs uppercase tracking-wider text-slate-400 font-semibold border-b border-white/10 whitespace-nowrap"
-                    >
-                      <div className="inline-flex items-center gap-2 justify-end">
-                        <span className="text-slate-200 normal-case tracking-normal font-medium">{c.name}</span>
-                        <span
-                          className="inline-block w-2.5 h-2.5 rounded-full"
-                          style={{ backgroundColor: c.color }}
-                        />
-                      </div>
-                    </th>
-                  ))}
-                  {visibleCurves.map((c, i) => {
-                    const isRef = i === 0;
-                    return (
-                      <th
-                        key={`p-${c.id}`}
-                        className={`px-4 py-2 text-right text-xs uppercase tracking-wider text-slate-400 font-semibold border-b border-white/10 whitespace-nowrap ${
-                          i === 0 ? 'border-l border-white/10' : ''
-                        }`}
-                      >
-                        <div className="inline-flex items-center gap-2 justify-end">
-                          <span
-                            className="inline-block w-2.5 h-2.5 rounded-full"
-                            style={{ backgroundColor: c.color }}
-                          />
-                          <span className="text-slate-200 normal-case tracking-normal font-medium">
-                            {isRef ? 'Réf.' : `Δ % vs ${visibleCurves[0].name}`}
-                          </span>
-                        </div>
-                      </th>
-                    );
-                  })}
-                </tr>
-              </thead>
-              <tbody>
-                {rows.map((r, i) => (
-                  <tr key={r.km} className={i % 2 === 0 ? 'bg-white/[0.015]' : ''}>
-                    <td className="px-4 py-1.5 text-slate-300 font-mono border-b border-white/5">
-                      {fmtKm(r.km)}
-                    </td>
-                    <td className="px-4 py-1.5 text-slate-400 font-mono border-b border-white/5">
-                      {fmtKm(r.km * 12)}
-                    </td>
-                    {visibleCurves.map((c) => (
-                      <td
-                        key={`v-${c.id}`}
-                        className="px-4 py-1.5 text-right text-slate-100 font-mono border-b border-white/5 whitespace-nowrap"
-                      >
-                        {fmtEur(r[c.id])}
-                      </td>
+            {(() => {
+              const totalCols = 2 + visibleCurves.length * 2;
+              const colWidth = `${100 / totalCols}%`;
+              return (
+                <table className="w-full text-sm border-separate border-spacing-0 table-fixed">
+                  <colgroup>
+                    {Array.from({ length: totalCols }).map((_, i) => (
+                      <col key={i} style={{ width: colWidth }} />
                     ))}
-                    {visibleCurves.map((c, j) => {
-                      const v = deltas[i][c.id];
-                      const cls =
-                        v == null
-                          ? 'text-slate-600'
-                          : v > 0
-                          ? 'text-rose-300'
-                          : v < 0
-                          ? 'text-emerald-300'
-                          : 'text-slate-400';
-                      return (
-                        <td
-                          key={`p-${c.id}`}
-                          className={`px-4 py-1.5 text-right font-mono border-b border-white/5 whitespace-nowrap ${cls} ${
-                            j === 0 ? 'border-l border-white/10' : ''
-                          }`}
+                  </colgroup>
+                  <thead className="sticky top-0 bg-slate-900/95 backdrop-blur-sm z-10">
+                    <tr>
+                      <th className="px-3 py-2 text-center text-xs uppercase tracking-wider text-slate-400 font-semibold border-b border-white/10">
+                        Km / mois
+                      </th>
+                      <th className="px-3 py-2 text-center text-xs uppercase tracking-wider text-slate-400 font-semibold border-b border-white/10">
+                        Km / an
+                      </th>
+                      {visibleCurves.map((c) => (
+                        <th
+                          key={`v-${c.id}`}
+                          className="px-3 py-2 text-center text-xs uppercase tracking-wider text-slate-400 font-semibold border-b border-white/10"
+                          title={c.name}
                         >
-                          {fmtPct(v)}
+                          <div className="inline-flex items-center gap-2 justify-center max-w-full">
+                            <span
+                              className="inline-block w-2.5 h-2.5 rounded-full shrink-0"
+                              style={{ backgroundColor: c.color }}
+                            />
+                            <span className="text-slate-200 normal-case tracking-normal font-medium truncate">{c.name}</span>
+                          </div>
+                        </th>
+                      ))}
+                      {visibleCurves.map((c, i) => {
+                        const isRef = i === 0;
+                        const label = isRef ? 'Réf.' : `Δ % vs ${visibleCurves[0].name}`;
+                        return (
+                          <th
+                            key={`p-${c.id}`}
+                            title={label}
+                            className={`px-3 py-2 text-center text-xs uppercase tracking-wider text-slate-400 font-semibold border-b border-white/10 ${
+                              i === 0 ? 'border-l border-white/10' : ''
+                            }`}
+                          >
+                            <div className="inline-flex items-center gap-2 justify-center max-w-full">
+                              <span
+                                className="inline-block w-2.5 h-2.5 rounded-full shrink-0"
+                                style={{ backgroundColor: c.color }}
+                              />
+                              <span className="text-slate-200 normal-case tracking-normal font-medium truncate">
+                                {label}
+                              </span>
+                            </div>
+                          </th>
+                        );
+                      })}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {rows.map((r, i) => (
+                      <tr key={r.km} className={i % 2 === 0 ? 'bg-white/[0.015]' : ''}>
+                        <td className="px-3 py-1.5 text-center text-slate-300 font-mono border-b border-white/5">
+                          {fmtKm(r.km)}
                         </td>
-                      );
-                    })}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                        <td className="px-3 py-1.5 text-center text-slate-400 font-mono border-b border-white/5">
+                          {fmtKm(r.km * 12)}
+                        </td>
+                        {visibleCurves.map((c) => (
+                          <td
+                            key={`v-${c.id}`}
+                            className="px-3 py-1.5 text-center text-slate-100 font-mono border-b border-white/5"
+                          >
+                            {fmtEur(r[c.id])}
+                          </td>
+                        ))}
+                        {visibleCurves.map((c, j) => {
+                          const v = deltas[i][c.id];
+                          const cls =
+                            v == null
+                              ? 'text-slate-600'
+                              : v > 0
+                              ? 'text-rose-300'
+                              : v < 0
+                              ? 'text-emerald-300'
+                              : 'text-slate-400';
+                          return (
+                            <td
+                              key={`p-${c.id}`}
+                              className={`px-3 py-1.5 text-center font-mono border-b border-white/5 ${cls} ${
+                                j === 0 ? 'border-l border-white/10' : ''
+                              }`}
+                            >
+                              {fmtPct(v)}
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              );
+            })()}
           </div>
         )}
       </div>
