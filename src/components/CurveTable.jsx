@@ -9,14 +9,50 @@ const fmtEur = (v) =>
   v == null || Number.isNaN(v)
     ? ''
     : new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(Math.round(v)) + ' €';
+const fmtPct = (v) =>
+  v == null || Number.isNaN(v) || !isFinite(v)
+    ? ''
+    : (v >= 0 ? '+' : '') +
+      new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(v) +
+      ' %';
 
-function downloadCsv(filename, rows, visible) {
-  // Excel-friendly: BOM UTF-8 + ; separator + decimal comma
-  const header = ['Km/mois', ...visible.map((c) => c.name)];
+// Per-row variation vs previous row, per curve. null for first row or when
+// either value is missing / previous value is 0.
+function computeDeltas(rows, visible) {
+  const deltas = rows.map(() => ({}));
+  for (const c of visible) {
+    let prev = null;
+    for (let i = 0; i < rows.length; i++) {
+      const cur = rows[i][c.id];
+      if (cur == null || prev == null || prev === 0) {
+        deltas[i][c.id] = null;
+      } else {
+        deltas[i][c.id] = ((cur - prev) / prev) * 100;
+      }
+      prev = cur;
+    }
+  }
+  return deltas;
+}
+
+function downloadCsv(filename, rows, deltas, visible) {
+  const header = [
+    'Km/mois',
+    'Km/an',
+    ...visible.map((c) => c.name),
+    ...visible.map((c) => `${c.name} (Δ %)`),
+  ];
   const lines = [header.join(';')];
-  for (const r of rows) {
-    const cells = [r.km, ...visible.map((c) => (r[c.id] == null ? '' : Math.round(r[c.id])))];
-    lines.push(cells.join(';'));
+  for (let i = 0; i < rows.length; i++) {
+    const r = rows[i];
+    const d = deltas[i];
+    const values = visible.map((c) => (r[c.id] == null ? '' : Math.round(r[c.id])));
+    const pcts = visible.map((c) => {
+      const v = d[c.id];
+      // Excel FR: decimal comma
+      return v == null || !isFinite(v) ? '' : v.toFixed(2).replace('.', ',');
+    });
+    lines.push([r.km, r.km * 12, ...values, ...pcts].join(';'));
   }
   const csv = '﻿' + lines.join('\r\n');
   const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
@@ -38,10 +74,15 @@ export default function CurveTable({ curves }) {
 
   const visibleCurves = visible || [];
 
+  const deltas = useMemo(
+    () => computeDeltas(rows, visibleCurves),
+    [rows, visibleCurves]
+  );
+
   const handleExport = () => {
     if (visibleCurves.length === 0) return;
     const today = new Date().toISOString().slice(0, 10);
-    downloadCsv(`curatif_${today}.csv`, rows, visibleCurves);
+    downloadCsv(`curatif_${today}.csv`, rows, deltas, visibleCurves);
   };
 
   return (
@@ -81,9 +122,12 @@ export default function CurveTable({ curves }) {
                   <th className="px-4 py-2 text-left text-xs uppercase tracking-wider text-slate-400 font-semibold border-b border-white/10">
                     Km / mois
                   </th>
+                  <th className="px-4 py-2 text-left text-xs uppercase tracking-wider text-slate-400 font-semibold border-b border-white/10">
+                    Km / an
+                  </th>
                   {visibleCurves.map((c) => (
                     <th
-                      key={c.id}
+                      key={`v-${c.id}`}
                       className="px-4 py-2 text-right text-xs uppercase tracking-wider text-slate-400 font-semibold border-b border-white/10 whitespace-nowrap"
                     >
                       <div className="inline-flex items-center gap-2 justify-end">
@@ -95,6 +139,22 @@ export default function CurveTable({ curves }) {
                       </div>
                     </th>
                   ))}
+                  {visibleCurves.map((c, i) => (
+                    <th
+                      key={`p-${c.id}`}
+                      className={`px-4 py-2 text-right text-xs uppercase tracking-wider text-slate-400 font-semibold border-b border-white/10 whitespace-nowrap ${
+                        i === 0 ? 'border-l border-white/10' : ''
+                      }`}
+                    >
+                      <div className="inline-flex items-center gap-2 justify-end">
+                        <span
+                          className="inline-block w-2.5 h-2.5 rounded-full"
+                          style={{ backgroundColor: c.color }}
+                        />
+                        <span className="text-slate-200 normal-case tracking-normal font-medium">Δ %</span>
+                      </div>
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody>
@@ -103,14 +163,38 @@ export default function CurveTable({ curves }) {
                     <td className="px-4 py-1.5 text-slate-300 font-mono border-b border-white/5">
                       {fmtKm(r.km)}
                     </td>
+                    <td className="px-4 py-1.5 text-slate-400 font-mono border-b border-white/5">
+                      {fmtKm(r.km * 12)}
+                    </td>
                     {visibleCurves.map((c) => (
                       <td
-                        key={c.id}
+                        key={`v-${c.id}`}
                         className="px-4 py-1.5 text-right text-slate-100 font-mono border-b border-white/5 whitespace-nowrap"
                       >
                         {fmtEur(r[c.id])}
                       </td>
                     ))}
+                    {visibleCurves.map((c, j) => {
+                      const v = deltas[i][c.id];
+                      const cls =
+                        v == null
+                          ? 'text-slate-600'
+                          : v > 0
+                          ? 'text-rose-300'
+                          : v < 0
+                          ? 'text-emerald-300'
+                          : 'text-slate-400';
+                      return (
+                        <td
+                          key={`p-${c.id}`}
+                          className={`px-4 py-1.5 text-right font-mono border-b border-white/5 whitespace-nowrap ${cls} ${
+                            j === 0 ? 'border-l border-white/10' : ''
+                          }`}
+                        >
+                          {fmtPct(v)}
+                        </td>
+                      );
+                    })}
                   </tr>
                 ))}
               </tbody>
