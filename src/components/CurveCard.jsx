@@ -5,7 +5,14 @@ import {
   getClassificationLabel,
   findEntry,
   autoCurveName,
+  estimateFromAnnualKm,
 } from '../lib/calc.js';
+
+const fmtEur = (v) =>
+  v == null || Number.isNaN(v)
+    ? '—'
+    : new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(Math.round(v)) + ' €';
+const fmtKm = (v) => new Intl.NumberFormat('fr-FR').format(Math.round(v));
 
 const selectClass =
   'w-full bg-slate-900/60 border border-slate-700 rounded-lg px-3 py-1.5 text-sm text-slate-100 ' +
@@ -18,7 +25,7 @@ const inputClass =
 
 const labelClass = 'block text-xs font-medium text-slate-400 mb-1';
 
-export default function CurveCard({ curve, onChange, onRemove }) {
+export default function CurveCard({ curve, onChange, onRemove, onDuplicate }) {
   const gammeNames = getGammeNames();
   const classificationLabel = getClassificationLabel(curve.gamme);
 
@@ -41,6 +48,11 @@ export default function CurveCard({ curve, onChange, onRemove }) {
 
   const isUnavailable =
     curve.gamme && curve.classification && curve.silhouette && curve.poc && curve.duree && !entry;
+
+  const estimate = useMemo(
+    () => (entry && curve.kmAnnuel ? estimateFromAnnualKm(curve, curve.kmAnnuel) : null),
+    [curve, entry]
+  );
 
   const update = (patch) => {
     const next = { ...curve, ...patch };
@@ -91,8 +103,21 @@ export default function CurveCard({ curve, onChange, onRemove }) {
         />
         <button
           type="button"
+          onClick={onDuplicate}
+          aria-label="Dupliquer la courbe"
+          title="Dupliquer la courbe"
+          className="shrink-0 p-1.5 text-slate-400 hover:text-violet-300 hover:bg-violet-500/10 rounded-lg transition-all duration-200"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+          </svg>
+        </button>
+        <button
+          type="button"
           onClick={onRemove}
           aria-label="Supprimer la courbe"
+          title="Supprimer la courbe"
           className="shrink-0 p-1.5 text-slate-400 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-all duration-200"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -196,6 +221,38 @@ export default function CurveCard({ curve, onChange, onRemove }) {
       {isUnavailable && (
         <p className="mt-2 text-xs text-amber-400/80">Combinaison indisponible</p>
       )}
+
+      {/* Estimation directe à partir d'un km annuel */}
+      <div className="mt-3 pt-3 border-t border-white/10">
+        <div className="flex items-end gap-2">
+          <div className="flex-1">
+            <label className={labelClass}>Km annuel → coût curatif</label>
+            <input
+              type="number"
+              step="1000"
+              min="0"
+              placeholder="ex: 120000"
+              value={curve.kmAnnuel ?? ''}
+              onChange={(e) => onChange({ ...curve, kmAnnuel: e.target.value })}
+              className={inputClass}
+              disabled={!entry}
+            />
+          </div>
+          <div className="shrink-0 min-w-[110px] text-right">
+            <div className="text-[10px] text-slate-500 uppercase tracking-wide">Curatif</div>
+            <div className={`text-base font-semibold ${estimate && estimate.over ? 'text-amber-300' : 'text-violet-200'}`}>
+              {estimate ? fmtEur(estimate.value) : '—'}
+            </div>
+          </div>
+        </div>
+        {estimate && (
+          <p className={`mt-1 text-[10px] ${estimate.over ? 'text-amber-400/80' : 'text-slate-500'}`}>
+            {fmtKm(estimate.kmMensuel)} km/mois
+            {estimate.over &&
+              ` · dépasse le plafond de 800 000 km sur ${curve.duree}m (max ${fmtKm(estimate.cap)} km/mois)`}
+          </p>
+        )}
+      </div>
     </div>
   );
 }

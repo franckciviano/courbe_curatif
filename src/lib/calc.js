@@ -87,6 +87,15 @@ export function computeCuratif(km, entry, gamme, heuresPMT, duree) {
   return km * km * a + km * b + c + pmt - 13 * Number(duree);
 }
 
+// Max total km over the whole contract for any vehicle
+export const KM_MAX_CONTRACT = 800000;
+
+// Per-curve max monthly km imposed by the 800 000 km contract ceiling
+export function maxKmPerMonth(duree) {
+  if (!duree || duree <= 0) return Infinity;
+  return KM_MAX_CONTRACT / Number(duree);
+}
+
 export function buildSeries(curve, kmMin = 2000, kmMax = 15000, steps = 200) {
   const g = getGamme(curve.gamme);
   const entry = findEntry(curve.gamme, {
@@ -96,13 +105,33 @@ export function buildSeries(curve, kmMin = 2000, kmMax = 15000, steps = 200) {
     duree: curve.duree,
   });
   if (!entry || !g) return [];
+  const cap = maxKmPerMonth(curve.duree);
   const out = [];
   const stepSize = (kmMax - kmMin) / (steps - 1);
   for (let i = 0; i < steps; i++) {
     const km = Math.round(kmMin + i * stepSize);
-    out.push({ km, value: computeCuratif(km, entry, g, curve.heuresPMT, curve.duree) });
+    const value = km > cap ? null : computeCuratif(km, entry, g, curve.heuresPMT, curve.duree);
+    out.push({ km, value });
   }
   return out;
+}
+
+// Direct cost estimation given an annual km input
+export function estimateFromAnnualKm(curve, kmAnnuel) {
+  const g = getGamme(curve.gamme);
+  const entry = findEntry(curve.gamme, {
+    classification: curve.classification,
+    silhouette: curve.silhouette,
+    poc: curve.poc,
+    duree: curve.duree,
+  });
+  if (!entry || !g) return null;
+  const km = Number(kmAnnuel) / 12;
+  if (!isFinite(km) || km <= 0) return null;
+  const cap = maxKmPerMonth(curve.duree);
+  const over = km > cap;
+  const value = computeCuratif(km, entry, g, curve.heuresPMT, curve.duree);
+  return { value, kmMensuel: km, over, cap };
 }
 
 export function autoCurveName(curve) {

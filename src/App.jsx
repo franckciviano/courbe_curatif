@@ -18,6 +18,7 @@ function makeCurve(partial, usedColors) {
     poc: null,
     duree: null,
     heuresPMT: 0,
+    kmAnnuel: '',
     nameTouched: false,
     ...partial,
   };
@@ -81,6 +82,24 @@ export default function App() {
     setCurves((prev) => prev.filter((c) => c.id !== id));
   }, []);
 
+  const duplicateCurve = useCallback((id) => {
+    setCurves((prev) => {
+      const idx = prev.findIndex((c) => c.id === id);
+      if (idx === -1) return prev;
+      const src = prev[idx];
+      const usedColors = prev.map((c) => c.color);
+      const copy = {
+        ...src,
+        id: nextId(),
+        color: pickColor(usedColors),
+        name: src.nameTouched ? `${src.name} (copie)` : autoCurveName(src),
+      };
+      const next = [...prev];
+      next.splice(idx + 1, 0, copy);
+      return next;
+    });
+  }, []);
+
   const toggleVisible = useCallback((id) => {
     setCurves((prev) => prev.map((c) => (c.id === id ? { ...c, visible: !c.visible } : c)));
   }, []);
@@ -127,14 +146,29 @@ export default function App() {
                 curve={c}
                 onChange={updateCurve}
                 onRemove={() => removeCurve(c.id)}
+                onDuplicate={() => duplicateCurve(c.id)}
               />
             ))}
           </div>
         </aside>
 
         {/* Chart */}
-        <main className="flex-1 min-w-0 p-4">
-          <div className="h-full w-full bg-white/[0.02] border border-white/10 rounded-2xl p-4 shadow-xl shadow-violet-500/10">
+        <main className="flex-1 min-w-0 p-4 flex flex-col gap-3 min-h-0">
+          {/* Equation reminder */}
+          <div className="shrink-0 bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 shadow-lg shadow-violet-500/10">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+              <div className="text-xs uppercase tracking-wider text-slate-400 font-semibold">
+                Formule
+              </div>
+              <code className="text-sm text-slate-100 font-mono">
+                Curatif = (km² × <span className="text-blue-300">a</span>) + (km × <span className="text-blue-300">b</span>) + <span className="text-blue-300">c</span> + (heures_PMT × 1,21) − (13 × durée)
+              </code>
+              <span className="text-[11px] text-slate-500">
+                km = km/mois · <span className="text-blue-300">c</span> = 0 si la gamme n'a pas de coefficient c · plafond 800 000 km / contrat
+              </span>
+            </div>
+          </div>
+          <div className="flex-1 min-h-0 w-full bg-white/[0.02] border border-white/10 rounded-2xl p-4 shadow-xl shadow-violet-500/10">
             <CurveChart curves={curves} onToggleVisible={toggleVisible} />
           </div>
         </main>

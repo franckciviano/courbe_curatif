@@ -9,10 +9,11 @@ import {
   Tooltip,
   Legend,
 } from 'recharts';
-import { buildSeries } from '../lib/calc.js';
+import { buildSeries, maxKmPerMonth } from '../lib/calc.js';
 
 const KM_MIN_DEFAULT = 2000;
-const KM_MAX_DEFAULT = 15000;
+const KM_MAX_HARD = 800000; // never let user zoom above this monthly equivalent
+const KM_MAX_FLOOR = 6000; // smallest auto xMax we'll show
 const STEPS = 200;
 
 const fmtEur = (v) =>
@@ -60,8 +61,21 @@ export default function CurveChart({ curves, onToggleVisible }) {
   const [zoom, setZoom] = useState(null); // { x0, x1 } once committed
   const [drag, setDrag] = useState(null); // { x0, x1 } while dragging
 
+  // Auto xMax: the largest per-curve cap (800 000 / duree) among visible curves
+  // so the shortest contract sets the rightmost limit, but every curve is cut
+  // at its own cap thanks to buildSeries returning null past it.
+  const autoXMax = useMemo(() => {
+    const caps = curves
+      .filter((c) => c.visible && c.duree)
+      .map((c) => maxKmPerMonth(c.duree))
+      .filter((v) => isFinite(v));
+    if (caps.length === 0) return 15000;
+    const m = Math.max(...caps);
+    return Math.max(KM_MAX_FLOOR, Math.min(KM_MAX_HARD, Math.ceil(m / 500) * 500));
+  }, [curves]);
+
   const xMin = zoom ? zoom.x0 : KM_MIN_DEFAULT;
-  const xMax = zoom ? zoom.x1 : KM_MAX_DEFAULT;
+  const xMax = zoom ? zoom.x1 : autoXMax;
 
   // Build per-curve series, then merge into chart data keyed by km
   const { data, visibleCurves } = useMemo(() => {
@@ -116,15 +130,15 @@ export default function CurveChart({ curves, onToggleVisible }) {
       const center = (xMin + xMax) / 2;
       const half = ((xMax - xMin) * factor) / 2;
       let newMin = Math.max(KM_MIN_DEFAULT, Math.round(center - half));
-      let newMax = Math.min(KM_MAX_DEFAULT, Math.round(center + half));
+      let newMax = Math.min(autoXMax, Math.round(center + half));
       if (newMax - newMin < 500) return;
-      if (newMin === KM_MIN_DEFAULT && newMax === KM_MAX_DEFAULT) {
+      if (newMin === KM_MIN_DEFAULT && newMax === autoXMax) {
         setZoom(null);
       } else {
         setZoom({ x0: newMin, x1: newMax });
       }
     },
-    [xMin, xMax]
+    [xMin, xMax, autoXMax]
   );
 
   const renderDot = (interval, color) => (props) => {
