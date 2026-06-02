@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import CurveCard from './components/CurveCard.jsx';
 import CurveChart from './components/CurveChart.jsx';
+import CurveTable from './components/CurveTable.jsx';
 import { CURVE_COLORS, pickColor } from './lib/colors.js';
 import { autoCurveName, findEntry, getGamme } from './lib/calc.js';
 
@@ -58,6 +59,7 @@ const INITIAL_CURVES = [
 
 export default function App() {
   const [curves, setCurves] = useState(INITIAL_CURVES);
+  const [tab, setTab] = useState('chart'); // 'chart' | 'table'
 
   const addCurve = useCallback(() => {
     setCurves((prev) => {
@@ -112,17 +114,39 @@ export default function App() {
   return (
     <div className="h-screen w-screen flex flex-col bg-gradient-to-br from-slate-950 via-indigo-950 to-violet-950 text-slate-100">
       {/* Header */}
-      <header className="shrink-0 border-b border-white/10 bg-white/[0.02] backdrop-blur-sm px-6 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-violet-500 flex items-center justify-center font-bold text-white shadow-lg shadow-violet-500/30">
+      <header className="shrink-0 border-b border-white/10 bg-white/[0.02] backdrop-blur-sm px-6 py-3 flex items-center justify-between gap-4">
+        <div className="flex items-center gap-3 min-w-0">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-violet-500 flex items-center justify-center font-bold text-white shadow-lg shadow-violet-500/30 shrink-0">
             C
           </div>
-          <div>
-            <h1 className="text-base font-semibold">Clovis – Simulateur de coût curatif</h1>
-            <p className="text-xs text-slate-400">Comparateur multi-courbes par gamme, motorisation et POC</p>
+          <div className="min-w-0">
+            <h1 className="text-base font-semibold truncate">Clovis – Simulateur de coût curatif</h1>
+            <p className="text-xs text-slate-400 truncate">Comparateur multi-courbes par gamme, motorisation et POC</p>
           </div>
         </div>
-        <div className="flex items-center gap-2 text-xs text-emerald-300/90 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-full">
+
+        {/* Tabs */}
+        <div className="flex items-center gap-1 bg-white/5 border border-white/10 rounded-lg p-1">
+          {[
+            { id: 'chart', label: 'Graphique' },
+            { id: 'table', label: 'Tableau' },
+          ].map((t) => (
+            <button
+              key={t.id}
+              type="button"
+              onClick={() => setTab(t.id)}
+              className={`px-4 py-1.5 text-sm font-medium rounded-md transition-all duration-200 ${
+                tab === t.id
+                  ? 'bg-gradient-to-r from-blue-500 to-violet-500 text-white shadow-lg shadow-violet-500/30'
+                  : 'text-slate-300 hover:text-white hover:bg-white/5'
+              }`}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-2 text-xs text-emerald-300/90 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-full shrink-0">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
           Mode local — aucune donnée transmise
         </div>
@@ -157,71 +181,83 @@ export default function App() {
           </div>
         </aside>
 
-        {/* Chart */}
+        {/* Main view */}
         <main className="flex-1 min-w-0 p-4 flex flex-col gap-3 min-h-0">
-          {/* Coefficients reminder: a, b, c per curve */}
-          <div className="shrink-0 bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 shadow-lg shadow-violet-500/10">
-            <div className="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-2">
-              Coefficients a / b / c
-            </div>
-            {curves.filter((c) => c.visible).length === 0 ? (
-              <p className="text-xs text-slate-500">Aucune courbe visible.</p>
-            ) : (
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="text-[11px] uppercase tracking-wide text-slate-500 text-left">
-                      <th className="font-medium pb-1 pr-4">Courbe</th>
-                      <th className="font-medium pb-1 pr-6 text-right font-mono">a</th>
-                      <th className="font-medium pb-1 pr-6 text-right font-mono">b</th>
-                      <th className="font-medium pb-1 text-right font-mono">c</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {curves
-                      .filter((c) => c.visible)
-                      .map((c) => {
-                        const g = getGamme(c.gamme);
-                        const entry = findEntry(c.gamme, {
-                          classification: c.classification,
-                          silhouette: c.silhouette,
-                          poc: c.poc,
-                          duree: c.duree,
-                        });
-                        const hasC = g && g.has_c;
-                        return (
-                          <tr key={c.id} className="border-t border-white/5">
-                            <td className="py-1 pr-4">
-                              <span className="inline-flex items-center gap-2 min-w-0">
-                                <span
-                                  className="inline-block w-2.5 h-2.5 rounded-full shrink-0"
-                                  style={{ backgroundColor: c.color }}
-                                />
-                                <span className="text-slate-200 truncate">{c.name}</span>
-                              </span>
-                            </td>
-                            <td className="py-1 pr-6 text-right font-mono text-slate-100">
-                              {entry ? fmtCoef(entry.a) : '—'}
-                            </td>
-                            <td className="py-1 pr-6 text-right font-mono text-slate-100">
-                              {entry ? fmtCoef(entry.b) : '—'}
-                            </td>
-                            <td className="py-1 text-right font-mono text-slate-100">
-                              {entry ? (hasC ? fmtCoef(entry.c) : '0') : '—'}
-                            </td>
-                          </tr>
-                        );
-                      })}
-                  </tbody>
-                </table>
-              </div>
-            )}
-          </div>
-          <div className="flex-1 min-h-0 w-full bg-white/[0.02] border border-white/10 rounded-2xl p-4 shadow-xl shadow-violet-500/10">
-            <CurveChart curves={curves} onToggleVisible={toggleVisible} />
-          </div>
+          {tab === 'chart' ? (
+            <ChartTabContent curves={curves} onToggleVisible={toggleVisible} />
+          ) : (
+            <CurveTable curves={curves} />
+          )}
         </main>
       </div>
     </div>
+  );
+}
+
+function ChartTabContent({ curves, onToggleVisible }) {
+  return (
+    <>
+      {/* Coefficients reminder: a, b, c per curve */}
+      <div className="shrink-0 bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 shadow-lg shadow-violet-500/10">
+        <div className="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-2">
+          Coefficients a / b / c
+        </div>
+        {curves.filter((c) => c.visible).length === 0 ? (
+          <p className="text-xs text-slate-500">Aucune courbe visible.</p>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="text-[11px] uppercase tracking-wide text-slate-500 text-left">
+                  <th className="font-medium pb-1 pr-4">Courbe</th>
+                  <th className="font-medium pb-1 pr-6 text-right font-mono">a</th>
+                  <th className="font-medium pb-1 pr-6 text-right font-mono">b</th>
+                  <th className="font-medium pb-1 text-right font-mono">c</th>
+                </tr>
+              </thead>
+              <tbody>
+                {curves
+                  .filter((c) => c.visible)
+                  .map((c) => {
+                    const g = getGamme(c.gamme);
+                    const entry = findEntry(c.gamme, {
+                      classification: c.classification,
+                      silhouette: c.silhouette,
+                      poc: c.poc,
+                      duree: c.duree,
+                    });
+                    const hasC = g && g.has_c;
+                    return (
+                      <tr key={c.id} className="border-t border-white/5">
+                        <td className="py-1 pr-4">
+                          <span className="inline-flex items-center gap-2 min-w-0">
+                            <span
+                              className="inline-block w-2.5 h-2.5 rounded-full shrink-0"
+                              style={{ backgroundColor: c.color }}
+                            />
+                            <span className="text-slate-200 truncate">{c.name}</span>
+                          </span>
+                        </td>
+                        <td className="py-1 pr-6 text-right font-mono text-slate-100">
+                          {entry ? fmtCoef(entry.a) : '—'}
+                        </td>
+                        <td className="py-1 pr-6 text-right font-mono text-slate-100">
+                          {entry ? fmtCoef(entry.b) : '—'}
+                        </td>
+                        <td className="py-1 text-right font-mono text-slate-100">
+                          {entry ? (hasC ? fmtCoef(entry.c) : '0') : '—'}
+                        </td>
+                      </tr>
+                    );
+                  })}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+      <div className="flex-1 min-h-0 w-full bg-white/[0.02] border border-white/10 rounded-2xl p-4 shadow-xl shadow-violet-500/10">
+        <CurveChart curves={curves} onToggleVisible={onToggleVisible} />
+      </div>
+    </>
   );
 }

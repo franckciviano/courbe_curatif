@@ -96,7 +96,7 @@ export function maxKmPerMonth(duree) {
   return KM_MAX_CONTRACT / Number(duree);
 }
 
-export function buildSeries(curve, kmMin = 2000, kmMax = 15000, steps = 200) {
+export function buildSeries(curve, kmMin = 2000, kmMax = 15000, step = 200) {
   const g = getGamme(curve.gamme);
   const entry = findEntry(curve.gamme, {
     classification: curve.classification,
@@ -107,13 +107,39 @@ export function buildSeries(curve, kmMin = 2000, kmMax = 15000, steps = 200) {
   if (!entry || !g) return [];
   const cap = maxKmPerMonth(curve.duree);
   const out = [];
-  const stepSize = (kmMax - kmMin) / (steps - 1);
-  for (let i = 0; i < steps; i++) {
-    const km = Math.round(kmMin + i * stepSize);
+  for (let km = kmMin; km <= kmMax; km += step) {
     const value = km > cap ? null : computeCuratif(km, entry, g, curve.heuresPMT, curve.duree);
     out.push({ km, value });
   }
   return out;
+}
+
+// Builds km axis (every `step` km) and merged data rows for all visible curves.
+// Each curve's value is null past its own 800 000 km cap.
+export function buildMergedSeries(curves, kmMin = 2000, step = 200) {
+  const visible = curves.filter((c) => c.visible);
+  if (visible.length === 0) return { kmAxis: [], rows: [] };
+  let kmMax = kmMin;
+  for (const c of visible) {
+    if (c.duree) kmMax = Math.max(kmMax, maxKmPerMonth(c.duree));
+  }
+  // round kmMax up to next step
+  kmMax = Math.ceil(kmMax / step) * step;
+  const seriesByCurve = new Map();
+  for (const c of visible) {
+    seriesByCurve.set(c.id, buildSeries(c, kmMin, kmMax, step));
+  }
+  const first = seriesByCurve.values().next().value || [];
+  const rows = first.map((p, i) => {
+    const row = { km: p.km };
+    for (const c of visible) {
+      const s = seriesByCurve.get(c.id);
+      const pt = s && s[i];
+      row[c.id] = pt && pt.value != null ? pt.value : null;
+    }
+    return row;
+  });
+  return { kmAxis: rows.map((r) => r.km), rows, visible };
 }
 
 // Direct cost estimation given an annual km input
