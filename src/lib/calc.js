@@ -1,0 +1,117 @@
+import coeffs from '../data/coefficients.json';
+
+export const DATA = coeffs;
+
+export function getGammeNames() {
+  return Object.keys(DATA.gammes);
+}
+
+export function getGamme(gammeName) {
+  return DATA.gammes[gammeName] || null;
+}
+
+export function getClassificationField(gammeName) {
+  const g = getGamme(gammeName);
+  return g ? g.classification_field : 'moteur';
+}
+
+export function getClassificationLabel(gammeName) {
+  return getClassificationField(gammeName) === 'type' ? 'Type' : 'Moteur';
+}
+
+// Generic distinct values for a given key, with filter
+function distinctValues(entries, key, filter = {}) {
+  const filtered = entries.filter((e) =>
+    Object.entries(filter).every(([k, v]) => v == null || e[k] === v)
+  );
+  const vals = Array.from(new Set(filtered.map((e) => e[key])));
+  // Sort numbers numerically, strings alphabetically
+  if (vals.every((v) => typeof v === 'number')) return vals.sort((a, b) => a - b);
+  return vals.sort();
+}
+
+// Returns options for cascading dropdowns based on the partial selection
+export function getOptions(gammeName, sel) {
+  const g = getGamme(gammeName);
+  if (!g) return { classification: [], silhouette: [], poc: [], duree: [] };
+  const cf = g.classification_field;
+  const entries = g.entries;
+
+  const classification = distinctValues(entries, cf);
+  const silhouette = sel.classification
+    ? distinctValues(entries, 'silhouette', { [cf]: sel.classification })
+    : [];
+  const poc = sel.classification && sel.silhouette
+    ? distinctValues(entries, 'poc', {
+        [cf]: sel.classification,
+        silhouette: sel.silhouette,
+      })
+    : [];
+  const duree = sel.classification && sel.silhouette && sel.poc
+    ? distinctValues(entries, 'duree', {
+        [cf]: sel.classification,
+        silhouette: sel.silhouette,
+        poc: sel.poc,
+      })
+    : [];
+  return { classification, silhouette, poc, duree };
+}
+
+export function findEntry(gammeName, sel) {
+  const g = getGamme(gammeName);
+  if (!g) return null;
+  const cf = g.classification_field;
+  if (!sel.classification || !sel.silhouette || !sel.poc || sel.duree == null) return null;
+  return (
+    g.entries.find(
+      (e) =>
+        e[cf] === sel.classification &&
+        e.silhouette === sel.silhouette &&
+        e.poc === sel.poc &&
+        e.duree === Number(sel.duree)
+    ) || null
+  );
+}
+
+/**
+ * Curatif total formula:
+ * Curatif = (km² × a) + (km × b) + c + (heuresPMT × 1.21) - (13 × duree)
+ * c = 0 if gamme has_c is false.
+ */
+export function computeCuratif(km, entry, gamme, heuresPMT, duree) {
+  if (!entry) return null;
+  const a = entry.a || 0;
+  const b = entry.b || 0;
+  const c = gamme && gamme.has_c ? (entry.c || 0) : 0;
+  const pmt = (Number(heuresPMT) || 0) * 1.21;
+  return km * km * a + km * b + c + pmt - 13 * Number(duree);
+}
+
+export function buildSeries(curve, kmMin = 2000, kmMax = 15000, steps = 200) {
+  const g = getGamme(curve.gamme);
+  const entry = findEntry(curve.gamme, {
+    classification: curve.classification,
+    silhouette: curve.silhouette,
+    poc: curve.poc,
+    duree: curve.duree,
+  });
+  if (!entry || !g) return [];
+  const out = [];
+  const stepSize = (kmMax - kmMin) / (steps - 1);
+  for (let i = 0; i < steps; i++) {
+    const km = Math.round(kmMin + i * stepSize);
+    out.push({ km, value: computeCuratif(km, entry, g, curve.heuresPMT, curve.duree) });
+  }
+  return out;
+}
+
+export function autoCurveName(curve) {
+  const parts = [
+    curve.gamme || '?',
+    curve.classification || '?',
+    curve.silhouette || '?',
+    curve.poc ? `POC ${curve.poc}` : 'POC ?',
+    curve.duree ? `${curve.duree}m` : '?m',
+  ];
+  return parts.join(' / ');
+}
