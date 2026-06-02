@@ -3,7 +3,7 @@ import CurveCard from './components/CurveCard.jsx';
 import CurveChart from './components/CurveChart.jsx';
 import CurveTable from './components/CurveTable.jsx';
 import { CURVE_COLORS, pickColor } from './lib/colors.js';
-import { autoCurveName, findEntry, getGamme } from './lib/calc.js';
+import { autoCurveName, findEntry, getGamme, isLinearGamme } from './lib/calc.js';
 
 const fmtCoef = (v) =>
   v == null
@@ -227,6 +227,7 @@ function ChartTabContent({ curves, onToggleVisible }) {
                       duree: c.duree,
                     });
                     const hasC = g && g.has_c;
+                    const linear = isLinearGamme(g);
                     return (
                       <tr key={c.id} className="border-t border-white/5">
                         <td className="py-1 pr-4">
@@ -236,6 +237,11 @@ function ChartTabContent({ curves, onToggleVisible }) {
                               style={{ backgroundColor: c.color }}
                             />
                             <span className="text-slate-200 truncate">{c.name}</span>
+                            {linear && (
+                              <span className="text-[10px] text-violet-300/80 bg-violet-500/10 border border-violet-500/20 rounded px-1.5 py-0.5">
+                                linéaire
+                              </span>
+                            )}
                           </span>
                         </td>
                         <td className="py-1 pr-6 text-right font-mono text-slate-100">
@@ -245,7 +251,7 @@ function ChartTabContent({ curves, onToggleVisible }) {
                           {entry ? fmtCoef(entry.b) : '—'}
                         </td>
                         <td className="py-1 text-right font-mono text-slate-100">
-                          {entry ? (hasC ? fmtCoef(entry.c) : '0') : '—'}
+                          {entry ? (linear ? 'n/a' : hasC ? fmtCoef(entry.c) : '0') : '—'}
                         </td>
                       </tr>
                     );

@@ -73,18 +73,30 @@ export function findEntry(gammeName, sel) {
   );
 }
 
+// Gammes classified by type (PORTEUR / TRACTEUR) use a linear formula with
+// no quadratic km² term and no c coefficient.
+export function isLinearGamme(gamme) {
+  return gamme && gamme.classification_field === 'type';
+}
+
 /**
  * Curatif total formula:
- * Curatif = (km² × a) + (km × b) + c + (heuresPMT × 1.21) - (13 × duree)
- * c = 0 if gamme has_c is false.
+ *  - Default (quadratic):   (km² × a) + (km × b) + c + (PMT × 1.21) − (13 × durée)
+ *    c = 0 if the gamme has no c coefficient.
+ *  - Type-classified gammes (C 2.5, K 2.5), linear:
+ *    (a × km) + b + (PMT × 1.21) − (13 × durée)
  */
 export function computeCuratif(km, entry, gamme, heuresPMT, duree) {
   if (!entry) return null;
   const a = entry.a || 0;
   const b = entry.b || 0;
-  const c = gamme && gamme.has_c ? (entry.c || 0) : 0;
   const pmt = (Number(heuresPMT) || 0) * 1.21;
-  return km * km * a + km * b + c + pmt - 13 * Number(duree);
+  const dureeTerm = 13 * Number(duree);
+  if (isLinearGamme(gamme)) {
+    return a * km + b + pmt - dureeTerm;
+  }
+  const c = gamme && gamme.has_c ? (entry.c || 0) : 0;
+  return km * km * a + km * b + c + pmt - dureeTerm;
 }
 
 // Max total km over the whole contract for any vehicle
