@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import CurveCard from './components/CurveCard.jsx';
 import CurveChart from './components/CurveChart.jsx';
 import CurveTable from './components/CurveTable.jsx';
+import CoefficientsView from './components/CoefficientsView.jsx';
 import { CURVE_COLORS, pickColor } from './lib/colors.js';
 import { autoCurveName, findEntry, getGamme, isLinearGamme } from './lib/calc.js';
 
@@ -130,6 +131,7 @@ export default function App() {
           {[
             { id: 'chart', label: 'Graphique' },
             { id: 'table', label: 'Tableau' },
+            { id: 'coefs', label: 'Coefficients' },
           ].map((t) => (
             <button
               key={t.id}
@@ -154,8 +156,8 @@ export default function App() {
 
       {/* Main */}
       <div className="flex-1 flex min-h-0">
-        {/* Sidebar */}
-        <aside className="w-[400px] shrink-0 border-r border-white/10 bg-black/20 flex flex-col">
+        {/* Sidebar — hidden on the Coefficients tab */}
+        <aside className={`${tab === 'coefs' ? 'hidden' : 'flex'} w-[400px] shrink-0 border-r border-white/10 bg-black/20 flex-col`}>
           <div className="p-4 shrink-0">
             <button
               type="button"
@@ -183,11 +185,9 @@ export default function App() {
 
         {/* Main view */}
         <main className="flex-1 min-w-0 p-4 flex flex-col gap-3 min-h-0">
-          {tab === 'chart' ? (
-            <ChartTabContent curves={curves} onToggleVisible={toggleVisible} />
-          ) : (
-            <CurveTable curves={curves} />
-          )}
+          {tab === 'chart' && <ChartTabContent curves={curves} onToggleVisible={toggleVisible} />}
+          {tab === 'table' && <CurveTable curves={curves} />}
+          {tab === 'coefs' && <CoefficientsView />}
         </main>
       </div>
     </div>
