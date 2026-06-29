@@ -84,10 +84,10 @@ export function findEntry(gammeName, sel) {
   );
 }
 
-// Gammes classified by type (PORTEUR / TRACTEUR) use a linear formula with
-// no quadratic km² term and no c coefficient.
+// Gammes classified by type (PORTEUR / TRACTEUR) or explicitly flagged linear
+// use a linear formula with no quadratic km² term and no c coefficient.
 export function isLinearGamme(gamme) {
-  return gamme && gamme.classification_field === 'type';
+  return gamme && (gamme.classification_field === 'type' || gamme.linear === true);
 }
 
 /**

@@ -27,7 +27,9 @@ function parseImportedExcel(file, onSuccess, onError) {
         const classifStr = String(row['Classification'] || '').trim();
         const cf = classifStr === 'Type' ? 'type' : 'moteur';
         const cfLabel = cf === 'type' ? 'Type' : 'Moteur';
-        const has_c = String(row['Coeff c'] || '').trim() === 'oui';
+        const coeffCRaw = String(row['Coeff c'] || '').trim();
+        const has_c = coeffCRaw === 'oui';
+        const linear = coeffCRaw === 'n/a';
 
         const sheetName = safeSheetName(gammeName);
         const sheet = wb.Sheets[sheetName];
@@ -64,7 +66,7 @@ function parseImportedExcel(file, onSuccess, onError) {
           errors.push(`Gamme "${gammeName}" : aucune ligne valide trouvée.`);
           continue;
         }
-        gammes[gammeName] = { classification_field: cf, has_c, entries };
+        gammes[gammeName] = { classification_field: cf, has_c, ...(linear ? { linear: true } : {}), entries };
       }
 
       if (Object.keys(gammes).length === 0) {
