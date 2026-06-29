@@ -1,6 +1,17 @@
-import coeffs from '../data/coefficients.json';
+import defaultCoeffs from '../data/coefficients.json';
 
-export const DATA = coeffs;
+const _stored = typeof localStorage !== 'undefined' ? localStorage.getItem('coefficients_data') : null;
+export let DATA = _stored ? JSON.parse(_stored) : defaultCoeffs;
+
+export function setData(newData) {
+  DATA = newData;
+  localStorage.setItem('coefficients_data', JSON.stringify(newData));
+}
+
+export function resetData() {
+  localStorage.removeItem('coefficients_data');
+  DATA = defaultCoeffs;
+}
 
 export function getGammeNames() {
   return Object.keys(DATA.gammes);
@@ -108,7 +119,7 @@ export function maxKmPerMonth(duree) {
   return KM_MAX_CONTRACT / Number(duree);
 }
 
-export function buildSeries(curve, kmMin = 2000, kmMax = 15000, step = 200) {
+export function buildSeries(curve, kmMin = 2000, kmMax = 15000, step = 200, entryOverride = null, ignoreCap = false) {
   const g = getGamme(curve.gamme);
   const entry = findEntry(curve.gamme, {
     classification: curve.classification,
@@ -117,10 +128,11 @@ export function buildSeries(curve, kmMin = 2000, kmMax = 15000, step = 200) {
     duree: curve.duree,
   });
   if (!entry || !g) return [];
+  const effectiveEntry = entryOverride ? { ...entry, ...entryOverride } : entry;
   const cap = maxKmPerMonth(curve.duree);
   const out = [];
   for (let km = kmMin; km <= kmMax; km += step) {
-    const value = km > cap ? null : computeCuratif(km, entry, g, curve.heuresPMT, curve.duree);
+    const value = (!ignoreCap && km > cap) ? null : computeCuratif(km, effectiveEntry, g, curve.heuresPMT, curve.duree);
     out.push({ km, value });
   }
   return out;
@@ -128,18 +140,22 @@ export function buildSeries(curve, kmMin = 2000, kmMax = 15000, step = 200) {
 
 // Builds km axis (every `step` km) and merged data rows for all visible curves.
 // Each curve's value is null past its own 800 000 km cap.
-export function buildMergedSeries(curves, kmMin = 2000, step = 200) {
+export function buildMergedSeries(curves, kmMin = 2000, step = 200, entryOverrides = {}, kmMaxOverride = null, ignoreCap = false) {
   const visible = curves.filter((c) => c.visible);
   if (visible.length === 0) return { kmAxis: [], rows: [] };
   let kmMax = kmMin;
-  for (const c of visible) {
-    if (c.duree) kmMax = Math.max(kmMax, maxKmPerMonth(c.duree));
+  if (kmMaxOverride) {
+    kmMax = kmMaxOverride;
+  } else {
+    for (const c of visible) {
+      if (c.duree) kmMax = Math.max(kmMax, maxKmPerMonth(c.duree));
+    }
   }
   // round kmMax up to next step
   kmMax = Math.ceil(kmMax / step) * step;
   const seriesByCurve = new Map();
   for (const c of visible) {
-    seriesByCurve.set(c.id, buildSeries(c, kmMin, kmMax, step));
+    seriesByCurve.set(c.id, buildSeries(c, kmMin, kmMax, step, entryOverrides[c.id] || null, ignoreCap));
   }
   const first = seriesByCurve.values().next().value || [];
   const rows = first.map((p, i) => {
@@ -177,8 +193,8 @@ export function autoCurveName(curve) {
     curve.gamme || '?',
     curve.classification || '?',
     curve.silhouette || '?',
-    curve.poc ? `POC ${curve.poc}` : 'POC ?',
-    curve.duree ? `${curve.duree}m` : '?m',
+    `POC ${curve.poc || '?'}`,
+    curve.duree ? `${curve.duree}M` : '?M',
   ];
-  return parts.join(' / ');
+  return parts.join('_');
 }

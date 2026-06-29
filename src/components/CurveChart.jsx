@@ -24,28 +24,33 @@ const fmtKm = (v) => new Intl.NumberFormat('fr-FR').format(Math.round(v));
 function CustomTooltip({ active, payload, label, curves }) {
   if (!active || !payload || payload.length === 0) return null;
   return (
-    <div className="bg-slate-900/95 backdrop-blur-sm border border-slate-700 rounded-lg p-3 shadow-xl shadow-black/40 text-sm max-w-xs">
-      <div className="text-slate-400 text-xs mb-2">
-        {fmtKm(label)} km/mois
+    <div className="bg-white border border-slate-200 rounded-lg p-3 shadow-xl shadow-black/10 text-sm min-w-[220px]">
+      <div className="flex justify-between items-baseline mb-2 pb-2 border-b border-slate-100">
+        <span className="text-slate-600 text-xs font-medium">{fmtKm(label)} km/mois</span>
       </div>
-      <div className="space-y-1.5">
+      <div className="space-y-2.5">
         {payload.map((p) => {
           const curve = curves.find((c) => c.id === p.dataKey);
           if (!curve) return null;
+          const kmTotal = curve.duree ? label * curve.duree : null;
           return (
-            <div key={p.dataKey} className="flex flex-col gap-0.5">
-              <div className="flex items-center justify-between gap-3">
-                <div className="flex items-center gap-2 min-w-0">
-                  <span
-                    className="inline-block w-2.5 h-2.5 rounded-full shrink-0"
-                    style={{ backgroundColor: p.color }}
-                  />
-                  <span className="text-slate-200 truncate">{curve.name}</span>
-                </div>
-                <span className="text-slate-100 font-medium whitespace-nowrap">{fmtEur(p.value)}</span>
+            <div key={p.dataKey} className="flex flex-col gap-1">
+              <div className="flex items-center gap-2 min-w-0">
+                <span
+                  className="inline-block w-2.5 h-2.5 rounded-full shrink-0"
+                  style={{ backgroundColor: p.color }}
+                />
+                <span className="text-slate-700 text-xs font-mono truncate">{curve.name}</span>
               </div>
-              <div className="text-[10px] text-slate-500 pl-4.5">
-                {curve.gamme} · {curve.classification} · {curve.silhouette} · POC {curve.poc} · {curve.duree}m · PMT {curve.heuresPMT || 0}h
+              <div className="pl-4 flex flex-col gap-0.5">
+                {kmTotal != null && (
+                  <div className="text-[11px] text-slate-400">
+                    Total contrat : <span className="text-slate-600 font-medium">{fmtKm(kmTotal)} km</span>
+                  </div>
+                )}
+                <div className="text-base font-bold" style={{ color: p.color }}>
+                  {p.value != null ? fmtEur(p.value) : <span className="text-slate-300 text-sm font-normal">hors plafond</span>}
+                </div>
               </div>
             </div>
           );
@@ -55,10 +60,42 @@ function CustomTooltip({ active, payload, label, curves }) {
   );
 }
 
-export default function CurveChart({ curves, onToggleVisible }) {
+function CustomLegend({ payload, curves, onToggleVisible }) {
+  if (!payload || payload.length === 0) return null;
+  return (
+    <div className="flex flex-wrap justify-center gap-x-5 gap-y-1.5 pt-3 pb-1 px-4">
+      {payload.map((entry) => {
+        const curve = curves.find((c) => c.id === entry.dataKey);
+        const name = curve?.name || entry.value;
+        const hidden = curve && !curve.visible;
+        return (
+          <button
+            key={entry.dataKey}
+            type="button"
+            onClick={() => onToggleVisible(entry.dataKey)}
+            className={`flex items-center gap-2 text-xs transition-opacity ${hidden ? 'opacity-40' : 'opacity-100'} hover:opacity-70 cursor-pointer`}
+          >
+            <span
+              className="inline-block shrink-0"
+              style={{
+                width: 20,
+                height: 2,
+                backgroundColor: entry.color,
+                borderRadius: 1,
+              }}
+            />
+            <span className="text-slate-600 font-mono">{name}</span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+export default function CurveChart({ curves, onToggleVisible, overrides = {} }) {
   const { rows, visible } = useMemo(
-    () => buildMergedSeries(curves, KM_MIN, KM_STEP),
-    [curves]
+    () => buildMergedSeries(curves, KM_MIN, KM_STEP, overrides),
+    [curves, overrides]
   );
 
   const xMax = rows.length ? rows[rows.length - 1].km : KM_MIN;
@@ -79,19 +116,18 @@ export default function CurveChart({ curves, onToggleVisible }) {
     return [Math.floor(lo - margin), Math.ceil(hi + margin)];
   }, [rows, visible]);
 
-  // Show dot markers roughly every 1000 km (step = 200 km → one in 5)
   const dotInterval = Math.max(1, Math.round(1000 / KM_STEP));
 
   const renderDot = (interval, color) => (props) => {
     const { cx, cy, index, value } = props;
     if (value == null || Number.isNaN(value)) return null;
     if (index % interval !== 0) return null;
-    return <circle cx={cx} cy={cy} r={3} fill={color} stroke="#0f172a" strokeWidth={1} />;
+    return <circle cx={cx} cy={cy} r={3} fill={color} stroke="#ffffff" strokeWidth={1} />;
   };
 
   if (!visible || visible.length === 0) {
     return (
-      <div className="h-full w-full flex items-center justify-center text-slate-500 text-sm">
+      <div className="h-full w-full flex items-center justify-center text-slate-400 text-sm">
         Aucune courbe visible — ajoutez ou cochez une courbe pour commencer.
       </div>
     );
@@ -101,46 +137,39 @@ export default function CurveChart({ curves, onToggleVisible }) {
     <div className="h-full w-full">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={rows} margin={{ top: 20, right: 30, bottom: 40, left: 70 }}>
-          <CartesianGrid stroke="rgba(148,163,184,0.12)" strokeDasharray="3 3" />
+          <CartesianGrid stroke="rgba(100,116,139,0.15)" strokeDasharray="3 3" />
           <XAxis
             dataKey="km"
             type="number"
             domain={[KM_MIN, xMax]}
             allowDataOverflow
-            tick={{ fill: '#94a3b8', fontSize: 11 }}
+            tick={{ fill: '#64748b', fontSize: 11 }}
             tickFormatter={fmtKm}
-            stroke="#475569"
+            stroke="#cbd5e1"
             label={{
               value: 'Km / mois',
               position: 'insideBottom',
               offset: -20,
-              fill: '#94a3b8',
+              fill: '#64748b',
               fontSize: 12,
             }}
           />
           <YAxis
             type="number"
             domain={yDomain}
-            tick={{ fill: '#94a3b8', fontSize: 11 }}
+            tick={{ fill: '#64748b', fontSize: 11 }}
             tickFormatter={(v) => fmtEur(v)}
-            stroke="#475569"
+            stroke="#cbd5e1"
             width={80}
           />
           <Tooltip
             content={<CustomTooltip curves={curves} />}
-            cursor={{ stroke: '#a78bfa', strokeWidth: 1, strokeDasharray: '4 4' }}
+            cursor={{ stroke: '#8b5cf6', strokeWidth: 1, strokeDasharray: '4 4' }}
           />
           <Legend
-            wrapperStyle={{ paddingTop: 18, fontSize: 12 }}
-            formatter={(value, entry) => {
-              const curve = curves.find((c) => c.id === entry.dataKey);
-              return (
-                <span style={{ color: '#cbd5e1', cursor: 'pointer' }}>
-                  {curve ? curve.name : value}
-                </span>
-              );
-            }}
-            onClick={(o) => onToggleVisible(o.dataKey)}
+            content={(props) => (
+              <CustomLegend {...props} curves={curves} onToggleVisible={onToggleVisible} />
+            )}
           />
           {visible.map((c) => (
             <Line
@@ -151,7 +180,7 @@ export default function CurveChart({ curves, onToggleVisible }) {
               stroke={c.color}
               strokeWidth={2}
               dot={renderDot(dotInterval, c.color)}
-              activeDot={{ r: 5, stroke: '#0f172a', strokeWidth: 2 }}
+              activeDot={{ r: 5, stroke: '#ffffff', strokeWidth: 2 }}
               isAnimationActive={false}
               connectNulls={false}
             />

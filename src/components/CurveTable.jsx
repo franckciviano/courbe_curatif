@@ -1,8 +1,9 @@
 import React, { useMemo } from 'react';
 import { buildMergedSeries } from '../lib/calc.js';
 
-const KM_MIN = 2000;
-const KM_STEP = 200;
+const KM_MIN = 500;
+const KM_MAX = 20000;
+const KM_STEP = 500;
 
 const fmtKm = (v) => new Intl.NumberFormat('fr-FR').format(Math.round(v));
 const fmtEur = (v) =>
@@ -16,9 +17,6 @@ const fmtPct = (v) =>
       new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(v) +
       ' %';
 
-// Per-row variation vs the first visible curve (reference) at the same km.
-// Reference column is always null. Null also when ref or current value
-// is missing, or the reference value is 0.
 function computeDeltas(rows, visible) {
   const deltas = rows.map(() => ({}));
   if (visible.length === 0) return deltas;
@@ -41,12 +39,16 @@ function computeDeltas(rows, visible) {
   return deltas;
 }
 
-function downloadCsv(filename, rows, deltas, visible) {
+function downloadCsv(filename, rows, deltas, visible, uniqueDurees) {
   const ref = visible[0];
   const nonRef = visible.slice(1);
+  const totalHeaders = uniqueDurees.length > 1
+    ? uniqueDurees.map((d) => `Km total (${d}m)`)
+    : ['Km total'];
   const header = [
     'Km/mois',
     'Km/an',
+    ...totalHeaders,
     ...visible.map((c) => c.name),
     ...nonRef.map((c) => `${c.name} Δ % vs ${ref.name}`),
   ];
@@ -54,13 +56,13 @@ function downloadCsv(filename, rows, deltas, visible) {
   for (let i = 0; i < rows.length; i++) {
     const r = rows[i];
     const d = deltas[i];
+    const totals = uniqueDurees.map((duree) => Math.round(r.km * duree));
     const values = visible.map((c) => (r[c.id] == null ? '' : Math.round(r[c.id])));
     const pcts = nonRef.map((c) => {
       const v = d[c.id];
-      // Excel FR: decimal comma
       return v == null || !isFinite(v) ? '' : v.toFixed(2).replace('.', ',');
     });
-    lines.push([r.km, r.km * 12, ...values, ...pcts].join(';'));
+    lines.push([r.km, r.km * 12, ...totals, ...values, ...pcts].join(';'));
   }
   const csv = '﻿' + lines.join('\r\n');
   const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
@@ -75,12 +77,19 @@ function downloadCsv(filename, rows, deltas, visible) {
 }
 
 export default function CurveTable({ curves }) {
+  // Force rows up to KM_MAX, ignoring the 800 000 km contract cap
   const { rows, visible } = useMemo(
-    () => buildMergedSeries(curves, KM_MIN, KM_STEP),
+    () => buildMergedSeries(curves, KM_MIN, KM_STEP, {}, KM_MAX, true),
     [curves]
   );
 
   const visibleCurves = visible || [];
+
+  // Unique contract durations for KM TOTAL columns
+  const uniqueDurees = useMemo(() => {
+    const seen = new Set();
+    return visibleCurves.map((c) => c.duree).filter((d) => d != null && !seen.has(d) && seen.add(d));
+  }, [visibleCurves]);
 
   const deltas = useMemo(
     () => computeDeltas(rows, visibleCurves),
@@ -90,19 +99,19 @@ export default function CurveTable({ curves }) {
   const handleExport = () => {
     if (visibleCurves.length === 0) return;
     const today = new Date().toISOString().slice(0, 10);
-    downloadCsv(`curatif_${today}.csv`, rows, deltas, visibleCurves);
+    downloadCsv(`curatif_${today}.csv`, rows, deltas, visibleCurves, uniqueDurees);
   };
 
   return (
     <div className="h-full w-full flex flex-col gap-3 min-h-0">
       {/* Toolbar */}
-      <div className="shrink-0 flex items-center justify-between gap-3 bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 shadow-lg shadow-violet-500/10">
-        <div className="text-sm text-slate-300">
-          <span className="font-semibold text-slate-100">{visibleCurves.length}</span> courbe{visibleCurves.length > 1 ? 's' : ''} visible{visibleCurves.length > 1 ? 's' : ''} ·
-          {' '}<span className="font-semibold text-slate-100">{rows.length}</span> lignes (pas de 200 km, jusqu'à 800 000 km / contrat)
+      <div className="shrink-0 flex items-center justify-between gap-3 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 shadow-sm">
+        <div className="text-sm text-slate-600">
+          <span className="font-semibold text-slate-800">{visibleCurves.length}</span> courbe{visibleCurves.length > 1 ? 's' : ''} visible{visibleCurves.length > 1 ? 's' : ''} ·
+          {' '}<span className="font-semibold text-slate-800">{rows.length}</span> lignes (pas de {fmtKm(KM_STEP)} km, de {fmtKm(KM_MIN)} à {fmtKm(KM_MAX)} km/mois)
           {visibleCurves.length > 1 && (
             <>
-              {' '}· Δ % calculé vs <span className="font-semibold text-slate-100">{visibleCurves[0].name}</span>
+              {' '}· Δ % calculé vs <span className="font-semibold text-slate-800">{visibleCurves[0].name}</span>
             </>
           )}
         </div>
@@ -110,7 +119,7 @@ export default function CurveTable({ curves }) {
           type="button"
           onClick={handleExport}
           disabled={visibleCurves.length === 0}
-          className="px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-violet-500 hover:from-blue-400 hover:to-violet-400 disabled:opacity-40 disabled:cursor-not-allowed text-white font-medium text-sm shadow-lg shadow-violet-500/30 transition-all duration-200 inline-flex items-center gap-2"
+          className="px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-violet-500 hover:from-blue-400 hover:to-violet-400 disabled:opacity-40 disabled:cursor-not-allowed text-white font-medium text-sm shadow-lg shadow-violet-500/20 transition-all duration-200 inline-flex items-center gap-2"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -122,29 +131,37 @@ export default function CurveTable({ curves }) {
       </div>
 
       {/* Table */}
-      <div className="flex-1 min-h-0 bg-white/[0.02] border border-white/10 rounded-2xl shadow-xl shadow-violet-500/10 overflow-hidden flex flex-col">
+      <div className="flex-1 min-h-0 bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden flex flex-col">
         {visibleCurves.length === 0 ? (
-          <div className="flex-1 flex items-center justify-center text-slate-500 text-sm">
+          <div className="flex-1 flex items-center justify-center text-slate-400 text-sm">
             Aucune courbe visible.
           </div>
         ) : (
           <div className="flex-1 overflow-auto scroll-area">
             <table className="w-full text-sm border-separate border-spacing-0">
-              <thead className="sticky top-0 bg-slate-900/95 backdrop-blur-sm z-10">
+              <thead className="sticky top-0 bg-slate-50/95 backdrop-blur-sm z-10">
                 <tr>
-                  <th className="px-4 py-2 text-left text-xs uppercase tracking-wider text-slate-400 font-semibold border-b border-white/10">
+                  <th className="px-4 py-2 text-left text-xs uppercase tracking-wider text-slate-500 font-semibold border-b border-slate-200">
                     Km / mois
                   </th>
-                  <th className="px-4 py-2 text-left text-xs uppercase tracking-wider text-slate-400 font-semibold border-b border-white/10">
+                  <th className="px-4 py-2 text-left text-xs uppercase tracking-wider text-slate-500 font-semibold border-b border-slate-200">
                     Km / an
                   </th>
+                  {uniqueDurees.map((duree) => (
+                    <th
+                      key={`total-${duree}`}
+                      className="px-4 py-2 text-right text-xs uppercase tracking-wider text-slate-500 font-semibold border-b border-slate-200 whitespace-nowrap"
+                    >
+                      Km total{uniqueDurees.length > 1 ? ` (${duree}m)` : ''}
+                    </th>
+                  ))}
                   {visibleCurves.map((c) => (
                     <th
                       key={`v-${c.id}`}
-                      className="px-4 py-2 text-right text-xs uppercase tracking-wider text-slate-400 font-semibold border-b border-white/10 whitespace-nowrap"
+                      className="px-4 py-2 text-right text-xs uppercase tracking-wider text-slate-500 font-semibold border-b border-slate-200 whitespace-nowrap"
                     >
                       <div className="inline-flex items-center gap-2 justify-end">
-                        <span className="text-slate-200 normal-case tracking-normal font-medium">{c.name}</span>
+                        <span className="text-slate-700 normal-case tracking-normal font-medium">{c.name}</span>
                         <span
                           className="inline-block w-2.5 h-2.5 rounded-full"
                           style={{ backgroundColor: c.color }}
@@ -155,8 +172,8 @@ export default function CurveTable({ curves }) {
                   {visibleCurves.slice(1).map((c, idx) => (
                     <th
                       key={`p-${c.id}`}
-                      className={`px-4 py-2 text-right text-xs uppercase tracking-wider text-slate-400 font-semibold border-b border-white/10 whitespace-nowrap ${
-                        idx === 0 ? 'border-l border-white/10' : ''
+                      className={`px-4 py-2 text-right text-xs uppercase tracking-wider text-slate-500 font-semibold border-b border-slate-200 whitespace-nowrap ${
+                        idx === 0 ? 'border-l border-slate-200' : ''
                       }`}
                     >
                       <div className="inline-flex items-center gap-2 justify-end">
@@ -164,7 +181,7 @@ export default function CurveTable({ curves }) {
                           className="inline-block w-2.5 h-2.5 rounded-full"
                           style={{ backgroundColor: c.color }}
                         />
-                        <span className="text-slate-200 normal-case tracking-normal font-medium">
+                        <span className="text-slate-700 normal-case tracking-normal font-medium">
                           Δ % vs {visibleCurves[0].name}
                         </span>
                       </div>
@@ -174,17 +191,25 @@ export default function CurveTable({ curves }) {
               </thead>
               <tbody>
                 {rows.map((r, i) => (
-                  <tr key={r.km} className={i % 2 === 0 ? 'bg-white/[0.015]' : ''}>
-                    <td className="px-4 py-1.5 text-slate-300 font-mono border-b border-white/5">
+                  <tr key={r.km} className={i % 2 === 0 ? 'bg-slate-50' : 'bg-white'}>
+                    <td className="px-4 py-1.5 text-slate-600 font-mono border-b border-slate-100">
                       {fmtKm(r.km)}
                     </td>
-                    <td className="px-4 py-1.5 text-slate-400 font-mono border-b border-white/5">
+                    <td className="px-4 py-1.5 text-slate-500 font-mono border-b border-slate-100">
                       {fmtKm(r.km * 12)}
                     </td>
+                    {uniqueDurees.map((duree) => (
+                      <td
+                        key={`total-${duree}`}
+                        className="px-4 py-1.5 text-right text-slate-700 font-mono font-medium border-b border-slate-100 whitespace-nowrap"
+                      >
+                        {fmtKm(r.km * duree)}
+                      </td>
+                    ))}
                     {visibleCurves.map((c) => (
                       <td
                         key={`v-${c.id}`}
-                        className="px-4 py-1.5 text-right text-slate-100 font-mono border-b border-white/5 whitespace-nowrap"
+                        className="px-4 py-1.5 text-right text-slate-800 font-mono border-b border-slate-100 whitespace-nowrap"
                       >
                         {fmtEur(r[c.id])}
                       </td>
@@ -193,17 +218,17 @@ export default function CurveTable({ curves }) {
                       const v = deltas[i][c.id];
                       const cls =
                         v == null
-                          ? 'text-slate-600'
+                          ? 'text-slate-300'
                           : v > 0
-                          ? 'text-emerald-300'
+                          ? 'text-emerald-600'
                           : v < 0
-                          ? 'text-rose-300'
+                          ? 'text-rose-600'
                           : 'text-slate-400';
                       return (
                         <td
                           key={`p-${c.id}`}
-                          className={`px-4 py-1.5 text-right font-mono border-b border-white/5 whitespace-nowrap ${cls} ${
-                            j === 0 ? 'border-l border-white/10' : ''
+                          className={`px-4 py-1.5 text-right font-mono border-b border-slate-100 whitespace-nowrap ${cls} ${
+                            j === 0 ? 'border-l border-slate-200' : ''
                           }`}
                         >
                           {fmtPct(v)}
