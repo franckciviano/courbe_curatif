@@ -5166,1716 +5166,181 @@
       ]
     },
     "K 2.5": {
-      "classification_field": "type",
-      "has_c": true,
-      "entries": [
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X2",
-          "poc": "H",
-          "duree": 36,
-          "a": 0.27876,
-          "b": 1680.64,
-          "c": 0,
-          "code": "PORTEUR_4X2_H_36"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X2",
-          "poc": "H",
-          "duree": 48,
-          "a": 0.49995,
-          "b": 4223.82,
-          "c": 0,
-          "code": "PORTEUR_4X2_H_48"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X2",
-          "poc": "H",
-          "duree": 60,
-          "a": 0.725584,
-          "b": 5922.64,
-          "c": 0,
-          "code": "PORTEUR_4X2_H_60"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X2",
-          "poc": "H",
-          "duree": 72,
-          "a": 1.26755,
-          "b": 7567.93,
-          "c": 0,
-          "code": "PORTEUR_4X2_H_72"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X2",
-          "poc": "H",
-          "duree": 84,
-          "a": 1.96748,
-          "b": 9284.223,
-          "c": 0,
-          "code": "PORTEUR_4X2_H_84"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X2",
-          "poc": "H",
-          "duree": 96,
-          "a": 2.5773988,
-          "b": 12162.332129999999,
-          "c": 0,
-          "code": "PORTEUR_4X2_H_96"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X2",
-          "poc": "M",
-          "duree": 36,
-          "a": 0.21008,
-          "b": 1523.08,
-          "c": 0,
-          "code": "PORTEUR_4X2_M_36"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X2",
-          "poc": "M",
-          "duree": 48,
-          "a": 0.409656,
-          "b": 3833.96,
-          "c": 0,
-          "code": "PORTEUR_4X2_M_48"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X2",
-          "poc": "M",
-          "duree": 60,
-          "a": 0.47268000000000004,
-          "b": 5188.976000000001,
-          "c": 0,
-          "code": "PORTEUR_4X2_M_60"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X2",
-          "poc": "M",
-          "duree": 72,
-          "a": 0.903344,
-          "b": 7058.688,
-          "c": 0,
-          "code": "PORTEUR_4X2_M_72"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X2",
-          "poc": "M",
-          "duree": 84,
-          "a": 1.4705599999999999,
-          "b": 7281.3728,
-          "c": 0,
-          "code": "PORTEUR_4X2_M_84"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X2",
-          "poc": "M",
-          "duree": 96,
-          "a": 1.9264336,
-          "b": 9538.598368,
-          "c": 0,
-          "code": "PORTEUR_4X2_M_96"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "L",
-          "duree": 24,
-          "a": 0.0372,
-          "b": 722,
-          "c": 0,
-          "code": "PORTEUR_4X4_L_24"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "L",
-          "duree": 36,
-          "a": 0.2504,
-          "b": 1140,
-          "c": 0,
-          "code": "PORTEUR_4X4_L_36"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "L",
-          "duree": 48,
-          "a": 0.38,
-          "b": 3080,
-          "c": 0,
-          "code": "PORTEUR_4X4_L_48"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "L",
-          "duree": 60,
-          "a": 0.551,
-          "b": 4100,
-          "c": 0,
-          "code": "PORTEUR_4X4_L_60"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "L",
-          "duree": 72,
-          "a": 0.766,
-          "b": 0.766,
-          "c": 0,
-          "code": "PORTEUR_4X4_L_72"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "L",
-          "duree": 84,
-          "a": 1.098,
-          "b": 8350,
-          "c": 0,
-          "code": "PORTEUR_4X4_L_84"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "L",
-          "duree": 96,
-          "a": 1.374,
-          "b": 10550,
-          "c": 0,
-          "code": "PORTEUR_4X4_L_96"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "M",
-          "duree": 24,
-          "a": 0.04836,
-          "b": 938.6,
-          "c": 0,
-          "code": "PORTEUR_4X4_M_24"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "M",
-          "duree": 36,
-          "a": 0.32552000000000003,
-          "b": 1482,
-          "c": 0,
-          "code": "PORTEUR_4X4_M_36"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "M",
-          "duree": 48,
-          "a": 0.49400000000000005,
-          "b": 4004,
-          "c": 0,
-          "code": "PORTEUR_4X4_M_48"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "M",
-          "duree": 60,
-          "a": 0.7163,
-          "b": 5330,
-          "c": 0,
-          "code": "PORTEUR_4X4_M_60"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "M",
-          "duree": 72,
-          "a": 0.9958,
-          "b": 0.9958,
-          "c": 0,
-          "code": "PORTEUR_4X4_M_72"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "M",
-          "duree": 84,
-          "a": 1.4274000000000002,
-          "b": 10855,
-          "c": 0,
-          "code": "PORTEUR_4X4_M_84"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "M",
-          "duree": 96,
-          "a": 1.7862000000000002,
-          "b": 13715,
-          "c": 0,
-          "code": "PORTEUR_4X4_M_96"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "H",
-          "duree": 24,
-          "a": 0.06286800000000001,
-          "b": 1220.18,
-          "c": 0,
-          "code": "PORTEUR_4X4_H_24"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "H",
-          "duree": 36,
-          "a": 0.42317600000000005,
-          "b": 1926.6000000000001,
-          "c": 0,
-          "code": "PORTEUR_4X4_H_36"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "H",
-          "duree": 48,
-          "a": 0.6422000000000001,
-          "b": 5205.2,
-          "c": 0,
-          "code": "PORTEUR_4X4_H_48"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "H",
-          "duree": 60,
-          "a": 0.9311900000000001,
-          "b": 6929,
-          "c": 0,
-          "code": "PORTEUR_4X4_H_60"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "H",
-          "duree": 72,
-          "a": 1.29454,
-          "b": 1.29454,
-          "c": 0,
-          "code": "PORTEUR_4X4_H_72"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "H",
-          "duree": 84,
-          "a": 1.8556200000000003,
-          "b": 14111.5,
-          "c": 0,
-          "code": "PORTEUR_4X4_H_84"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "H",
-          "duree": 96,
-          "a": 2.3220600000000005,
-          "b": 17829.5,
-          "c": 0,
-          "code": "PORTEUR_4X4_H_96"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "S",
-          "duree": 24,
-          "a": 0.0817284,
-          "b": 1586.2340000000002,
-          "c": 0,
-          "code": "PORTEUR_4X4_S_24"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "S",
-          "duree": 36,
-          "a": 0.5501288000000001,
-          "b": 2504.5800000000004,
-          "c": 0,
-          "code": "PORTEUR_4X4_S_36"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "S",
-          "duree": 48,
-          "a": 0.8348600000000002,
-          "b": 6766.76,
-          "c": 0,
-          "code": "PORTEUR_4X4_S_48"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "4X2",
-          "poc": "H",
-          "duree": 36,
-          "a": 0.27876,
-          "b": 2115.748,
-          "c": 0,
-          "code": "TRACTEUR_4X2_H_36"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "4X2",
-          "poc": "H",
-          "duree": 48,
-          "a": 0.482376,
-          "b": 5016.872,
-          "c": 0,
-          "code": "TRACTEUR_4X2_H_48"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "4X2",
-          "poc": "H",
-          "duree": 60,
-          "a": 0.71912,
-          "b": 6121.61,
-          "c": 0,
-          "code": "TRACTEUR_4X2_H_60"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "4X2",
-          "poc": "H",
-          "duree": 72,
-          "a": 1.2394720000000001,
-          "b": 7932.54,
-          "c": 0,
-          "code": "TRACTEUR_4X2_H_72"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "4X2",
-          "poc": "H",
-          "duree": 84,
-          "a": 2.06141,
-          "b": 9508.14,
-          "c": 0,
-          "code": "TRACTEUR_4X2_H_84"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "4X2",
-          "poc": "H",
-          "duree": 96,
-          "a": 2.7004471,
-          "b": 12455.6634,
-          "c": 0,
-          "code": "TRACTEUR_4X2_H_96"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "4X2",
-          "poc": "M",
-          "duree": 36,
-          "a": 0.23108800000000002,
-          "b": 1741.24,
-          "c": 0,
-          "code": "TRACTEUR_4X2_M_36"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "4X2",
-          "poc": "M",
-          "duree": 48,
-          "a": 0.409656,
-          "b": 3602.872,
-          "c": 0,
-          "code": "TRACTEUR_4X2_M_48"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "4X2",
-          "poc": "M",
-          "duree": 60,
-          "a": 0.5227759999999999,
-          "b": 5041.92,
-          "c": 0,
-          "code": "TRACTEUR_4X2_M_60"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "4X2",
-          "poc": "M",
-          "duree": 72,
-          "a": 0.882336,
-          "b": 7235.1552,
-          "c": 0,
-          "code": "TRACTEUR_4X2_M_72"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "4X2",
-          "poc": "M",
-          "duree": 84,
-          "a": 1.371984,
-          "b": 8326.5208,
-          "c": 0,
-          "code": "TRACTEUR_4X2_M_84"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "4X2",
-          "poc": "M",
-          "duree": 96,
-          "a": 1.7972990400000002,
-          "b": 10907.742248,
-          "c": 0,
-          "code": "TRACTEUR_4X2_M_96"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X4",
-          "poc": "H",
-          "duree": 36,
-          "a": 0.2626,
-          "b": 2620.748,
-          "c": 0,
-          "code": "TRACTEUR_6X4_H_36"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X4",
-          "poc": "H",
-          "duree": 48,
-          "a": 0.46217600000000003,
-          "b": 4915.872,
-          "c": 0,
-          "code": "TRACTEUR_6X4_H_48"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X4",
-          "poc": "H",
-          "duree": 60,
-          "a": 1.1029200000000001,
-          "b": 5819.216,
-          "c": 0,
-          "code": "TRACTEUR_6X4_H_60"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X4",
-          "poc": "H",
-          "duree": 72,
-          "a": 1.2394720000000001,
-          "b": 8437.8632,
-          "c": 0,
-          "code": "TRACTEUR_6X4_H_72"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X4",
-          "poc": "H",
-          "duree": 84,
-          "a": 1.371984,
-          "b": 10043.5208,
-          "c": 0,
-          "code": "TRACTEUR_6X4_H_84"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X4",
-          "poc": "H",
-          "duree": 96,
-          "a": 1.7972990400000002,
-          "b": 13157.012248,
-          "c": 0,
-          "code": "TRACTEUR_6X4_H_96"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X4",
-          "poc": "M",
-          "duree": 36,
-          "a": 0.21008,
-          "b": 2941.12,
-          "c": 0,
-          "code": "TRACTEUR_6X4_M_36"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X4",
-          "poc": "M",
-          "duree": 48,
-          "a": 0.47268000000000004,
-          "b": 3823.456,
-          "c": 0,
-          "code": "TRACTEUR_6X4_M_48"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X4",
-          "poc": "M",
-          "duree": 60,
-          "a": 0.724776,
-          "b": 5167.968,
-          "c": 0,
-          "code": "TRACTEUR_6X4_M_60"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X4",
-          "poc": "M",
-          "duree": 72,
-          "a": 0.882336,
-          "b": 7235.1552,
-          "c": 0,
-          "code": "TRACTEUR_6X4_M_72"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "H",
-          "duree": 24,
-          "a": 0.06964490000000001,
-          "b": 1697.1825000000001,
-          "c": 0,
-          "code": "TRACTEUR_6X6_H_24"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "H",
-          "duree": 36,
-          "a": 0.5558410000000001,
-          "b": 2900.0400000000004,
-          "c": 0,
-          "code": "TRACTEUR_6X6_H_36"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "H",
-          "duree": 48,
-          "a": 0.7876245000000002,
-          "b": 7162.220000000001,
-          "c": 0,
-          "code": "TRACTEUR_6X6_H_48"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "H",
-          "duree": 60,
-          "a": 1.3768599000000001,
-          "b": 10435.75,
-          "c": 0,
-          "code": "TRACTEUR_6X6_H_60"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "H",
-          "duree": 72,
-          "a": 1.8283434000000003,
-          "b": 15708.550000000001,
-          "c": 0,
-          "code": "TRACTEUR_6X6_H_72"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "H",
-          "duree": 84,
-          "a": 2.546323,
-          "b": 22673.04,
-          "c": 0,
-          "code": "TRACTEUR_6X6_H_84"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "H",
-          "duree": 96,
-          "a": 3.2186050000000006,
-          "b": 29659.5,
-          "c": 0,
-          "code": "TRACTEUR_6X6_H_96"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "L",
-          "duree": 24,
-          "a": 0.0317,
-          "b": 772.5,
-          "c": 0,
-          "code": "TRACTEUR_6X6_L_24"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "L",
-          "duree": 36,
-          "a": 0.253,
-          "b": 1320,
-          "c": 0,
-          "code": "TRACTEUR_6X6_L_36"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "L",
-          "duree": 48,
-          "a": 0.3585,
-          "b": 3260,
-          "c": 0,
-          "code": "TRACTEUR_6X6_L_48"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "L",
-          "duree": 60,
-          "a": 0.6267,
-          "b": 4750,
-          "c": 0,
-          "code": "TRACTEUR_6X6_L_60"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "L",
-          "duree": 72,
-          "a": 0.8322,
-          "b": 7150,
-          "c": 0,
-          "code": "TRACTEUR_6X6_L_72"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "L",
-          "duree": 84,
-          "a": 1.159,
-          "b": 10320,
-          "c": 0,
-          "code": "TRACTEUR_6X6_L_84"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "L",
-          "duree": 96,
-          "a": 1.465,
-          "b": 13500,
-          "c": 0,
-          "code": "TRACTEUR_6X6_L_96"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "M",
-          "duree": 24,
-          "a": 0.041210000000000004,
-          "b": 1004.25,
-          "c": 0,
-          "code": "TRACTEUR_6X6_M_24"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "M",
-          "duree": 36,
-          "a": 0.3289,
-          "b": 1716,
-          "c": 0,
-          "code": "TRACTEUR_6X6_M_36"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "M",
-          "duree": 48,
-          "a": 0.46605,
-          "b": 4238,
-          "c": 0,
-          "code": "TRACTEUR_6X6_M_48"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "M",
-          "duree": 60,
-          "a": 0.81471,
-          "b": 6175,
-          "c": 0,
-          "code": "TRACTEUR_6X6_M_60"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "M",
-          "duree": 72,
-          "a": 1.08186,
-          "b": 9295,
-          "c": 0,
-          "code": "TRACTEUR_6X6_M_72"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "M",
-          "duree": 84,
-          "a": 1.5067000000000002,
-          "b": 13416,
-          "c": 0,
-          "code": "TRACTEUR_6X6_M_84"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "M",
-          "duree": 96,
-          "a": 1.9045,
-          "b": 17550,
-          "c": 0,
-          "code": "TRACTEUR_6X6_M_96"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "S",
-          "duree": 24,
-          "a": 0.05357300000000001,
-          "b": 1305.525,
-          "c": 0,
-          "code": "TRACTEUR_6X6_S_24"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "S",
-          "duree": 36,
-          "a": 0.42757000000000006,
-          "b": 2230.8,
-          "c": 0,
-          "code": "TRACTEUR_6X6_S_36"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "S",
-          "duree": 48,
-          "a": 0.6058650000000001,
-          "b": 5509.400000000001,
-          "c": 0,
-          "code": "TRACTEUR_6X6_S_48"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "S",
-          "duree": 60,
-          "a": 1.059123,
-          "b": 8027.5,
-          "c": 0,
-          "code": "TRACTEUR_6X6_S_60"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "S",
-          "duree": 72,
-          "a": 1.4064180000000002,
-          "b": 12083.5,
-          "c": 0,
-          "code": "TRACTEUR_6X6_S_72"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "S",
-          "duree": 84,
-          "a": 1.9587100000000002,
-          "b": 17440.8,
-          "c": 0,
-          "code": "TRACTEUR_6X6_S_84"
-        },
-        {
-          "type": "TRACTEUR",
-          "silhouette": "6X6",
-          "poc": "S",
-          "duree": 96,
-          "a": 2.4758500000000003,
-          "b": 22815,
-          "c": 0,
-          "code": "TRACTEUR_6X6_S_96"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "S",
-          "duree": 60,
-          "a": 0.06964490000000001,
-          "b": 1697.1825000000001,
-          "c": 0,
-          "code": "PORTEUR_4X4_S_60"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "S",
-          "duree": 72,
-          "a": 0.5558410000000001,
-          "b": 2900.0400000000004,
-          "c": 0,
-          "code": "PORTEUR_4X4_S_72"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "S",
-          "duree": 84,
-          "a": 0.7876245000000002,
-          "b": 7162.220000000001,
-          "c": 0,
-          "code": "PORTEUR_4X4_S_84"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "4X4",
-          "poc": "S",
-          "duree": 96,
-          "a": 1.3768599000000001,
-          "b": 10435.75,
-          "c": 0,
-          "code": "PORTEUR_4X4_S_96"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X4",
-          "poc": "H",
-          "duree": 36,
-          "a": 0.21412,
-          "b": 2193.72,
-          "c": 0,
-          "code": "PORTEUR_6X4_H_36"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X4",
-          "poc": "H",
-          "duree": 48,
-          "a": 0.47268000000000004,
-          "b": 4436.728,
-          "c": 0,
-          "code": "PORTEUR_6X4_H_48"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X4",
-          "poc": "H",
-          "duree": 60,
-          "a": 0.675488,
-          "b": 6155.344,
-          "c": 0,
-          "code": "PORTEUR_6X4_H_60"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X4",
-          "poc": "H",
-          "duree": 72,
-          "a": 1.217252,
-          "b": 7627.4392,
-          "c": 0,
-          "code": "PORTEUR_6X4_H_72"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X4",
-          "poc": "H",
-          "duree": 84,
-          "a": 2.046462,
-          "b": 9698.121000000001,
-          "c": 0,
-          "code": "PORTEUR_6X4_H_84"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X4",
-          "poc": "H",
-          "duree": 96,
-          "a": 2.68086522,
-          "b": 12704.53851,
-          "c": 0,
-          "code": "PORTEUR_6X4_H_96"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X4",
-          "poc": "M",
-          "duree": 36,
-          "a": 0.15756,
-          "b": 2033.5744,
-          "c": 0,
-          "code": "PORTEUR_6X4_M_36"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X4",
-          "poc": "M",
-          "duree": 48,
-          "a": 0.399152,
-          "b": 3707.912,
-          "c": 0,
-          "code": "PORTEUR_6X4_M_48"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X4",
-          "poc": "M",
-          "duree": 60,
-          "a": 0.47268000000000004,
-          "b": 5454.060600000001,
-          "c": 0,
-          "code": "PORTEUR_6X4_M_60"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X4",
-          "poc": "M",
-          "duree": 72,
-          "a": 0.808808,
-          "b": 7510.36,
-          "c": 0,
-          "code": "PORTEUR_6X4_M_72"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X4",
-          "poc": "M",
-          "duree": 84,
-          "a": 1.2053340000000001,
-          "b": 9143.732,
-          "c": 0,
-          "code": "PORTEUR_6X4_M_84"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X4",
-          "poc": "M",
-          "duree": 96,
-          "a": 1.5789875400000002,
-          "b": 11978.28892,
-          "c": 0,
-          "code": "PORTEUR_6X4_M_96"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "L",
-          "duree": 24,
-          "a": 0.0319,
-          "b": 832,
-          "c": 0,
-          "code": "PORTEUR_6X6_L_24"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "L",
-          "duree": 36,
-          "a": 0.2705,
-          "b": 1345,
-          "c": 0,
-          "code": "PORTEUR_6X6_L_36"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "L",
-          "duree": 48,
-          "a": 0.3647,
-          "b": 3305,
-          "c": 0,
-          "code": "PORTEUR_6X6_L_48"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "L",
-          "duree": 60,
-          "a": 0.6426,
-          "b": 4750,
-          "c": 0,
-          "code": "PORTEUR_6X6_L_60"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "L",
-          "duree": 72,
-          "a": 0.841,
-          "b": 7480,
-          "c": 0,
-          "code": "PORTEUR_6X6_L_72"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "L",
-          "duree": 84,
-          "a": 1.192,
-          "b": 11350,
-          "c": 0,
-          "code": "PORTEUR_6X6_L_84"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "L",
-          "duree": 96,
-          "a": 1.495,
-          "b": 13950,
-          "c": 0,
-          "code": "PORTEUR_6X6_L_96"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "M",
-          "duree": 24,
-          "a": 0.04147,
-          "b": 1081.6000000000001,
-          "c": 0,
-          "code": "PORTEUR_6X6_M_24"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "M",
-          "duree": 36,
-          "a": 0.35165,
-          "b": 1748.5,
-          "c": 0,
-          "code": "PORTEUR_6X6_M_36"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "M",
-          "duree": 48,
-          "a": 0.47411000000000003,
-          "b": 4296.5,
-          "c": 0,
-          "code": "PORTEUR_6X6_M_48"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "M",
-          "duree": 60,
-          "a": 0.83538,
-          "b": 6175,
-          "c": 0,
-          "code": "PORTEUR_6X6_M_60"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "M",
-          "duree": 72,
-          "a": 1.0933,
-          "b": 9724,
-          "c": 0,
-          "code": "PORTEUR_6X6_M_72"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "M",
-          "duree": 84,
-          "a": 1.5496,
-          "b": 14755,
-          "c": 0,
-          "code": "PORTEUR_6X6_M_84"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "M",
-          "duree": 96,
-          "a": 1.9435000000000002,
-          "b": 18135,
-          "c": 0,
-          "code": "PORTEUR_6X6_M_96"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "H",
-          "duree": 24,
-          "a": 0.053911,
-          "b": 1406.0800000000002,
-          "c": 0,
-          "code": "PORTEUR_6X6_H_24"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "H",
-          "duree": 36,
-          "a": 0.457145,
-          "b": 2273.05,
-          "c": 0,
-          "code": "PORTEUR_6X6_H_36"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "H",
-          "duree": 48,
-          "a": 0.6163430000000001,
-          "b": 5585.45,
-          "c": 0,
-          "code": "PORTEUR_6X6_H_48"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "H",
-          "duree": 60,
-          "a": 1.0859940000000001,
-          "b": 8027.5,
-          "c": 0,
-          "code": "PORTEUR_6X6_H_60"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "H",
-          "duree": 72,
-          "a": 1.42129,
-          "b": 12641.2,
-          "c": 0,
-          "code": "PORTEUR_6X6_H_72"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "H",
-          "duree": 84,
-          "a": 2.0144800000000003,
-          "b": 19181.5,
-          "c": 0,
-          "code": "PORTEUR_6X6_H_84"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "H",
-          "duree": 96,
-          "a": 2.5265500000000003,
-          "b": 23575.5,
-          "c": 0,
-          "code": "PORTEUR_6X6_H_96"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "S",
-          "duree": 24,
-          "a": 0.0700843,
-          "b": 1827.9040000000002,
-          "c": 0,
-          "code": "PORTEUR_6X6_S_24"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "S",
-          "duree": 36,
-          "a": 0.5942885,
-          "b": 2954.965,
-          "c": 0,
-          "code": "PORTEUR_6X6_S_36"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "S",
-          "duree": 48,
-          "a": 0.8012459000000002,
-          "b": 7261.085,
-          "c": 0,
-          "code": "PORTEUR_6X6_S_48"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "S",
-          "duree": 60,
-          "a": 1.4117922000000003,
-          "b": 10435.75,
-          "c": 0,
-          "code": "PORTEUR_6X6_S_60"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "S",
-          "duree": 72,
-          "a": 1.847677,
-          "b": 16433.56,
-          "c": 0,
-          "code": "PORTEUR_6X6_S_72"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "S",
-          "duree": 84,
-          "a": 2.6188240000000005,
-          "b": 24935.95,
-          "c": 0,
-          "code": "PORTEUR_6X6_S_84"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "6X6",
-          "poc": "S",
-          "duree": 96,
-          "a": 3.2845150000000003,
-          "b": 30648.15,
-          "c": 0,
-          "code": "PORTEUR_6X6_S_96"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X4",
-          "poc": "H",
-          "duree": 36,
-          "a": 0.240784,
-          "b": 2267.8136,
-          "c": 0,
-          "code": "PORTEUR_8X4_H_36"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X4",
-          "poc": "H",
-          "duree": 48,
-          "a": 0.48399200000000003,
-          "b": 4593.4800000000005,
-          "c": 0,
-          "code": "PORTEUR_8X4_H_48"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X4",
-          "poc": "H",
-          "duree": 60,
-          "a": 0.706192,
-          "b": 6354.112,
-          "c": 0,
-          "code": "PORTEUR_8X4_H_60"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X4",
-          "poc": "H",
-          "duree": 72,
-          "a": 1.2778520000000002,
-          "b": 8111.512,
-          "c": 0,
-          "code": "PORTEUR_8X4_H_72"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X4",
-          "poc": "H",
-          "duree": 84,
-          "a": 2.143725,
-          "b": 10137.37,
-          "c": 0,
-          "code": "PORTEUR_8X4_H_84"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X4",
-          "poc": "H",
-          "duree": 96,
-          "a": 2.80827975,
-          "b": 13279.954700000002,
-          "c": 0,
-          "code": "PORTEUR_8X4_H_96"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X4",
-          "poc": "M",
-          "duree": 36,
-          "a": 0.16806400000000002,
-          "b": 2129.08,
-          "c": 0,
-          "code": "PORTEUR_8X4_M_36"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X4",
-          "poc": "M",
-          "duree": 48,
-          "a": 0.420968,
-          "b": 3890.52,
-          "c": 0,
-          "code": "PORTEUR_8X4_M_48"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X4",
-          "poc": "M",
-          "duree": 60,
-          "a": 0.512272,
-          "b": 5676.8464,
-          "c": 0,
-          "code": "PORTEUR_8X4_M_60"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X4",
-          "poc": "M",
-          "duree": 72,
-          "a": 0.8888,
-          "b": 7177.06,
-          "c": 0,
-          "code": "PORTEUR_8X4_M_72"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X4",
-          "poc": "M",
-          "duree": 84,
-          "a": 1.245532,
-          "b": 9470.77,
-          "c": 0,
-          "code": "PORTEUR_8X4_M_84"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X4",
-          "poc": "M",
-          "duree": 96,
-          "a": 1.6316469200000001,
-          "b": 12406.708700000001,
-          "c": 0,
-          "code": "PORTEUR_8X4_M_96"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "L",
-          "duree": 24,
-          "a": 0.0392,
-          "b": 1155,
-          "c": 0,
-          "code": "PORTEUR_8X8_L_24"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "L",
-          "duree": 36,
-          "a": 0.2772,
-          "b": 1850,
-          "c": 0,
-          "code": "PORTEUR_8X8_L_36"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "L",
-          "duree": 48,
-          "a": 0.422,
-          "b": 3820,
-          "c": 0,
-          "code": "PORTEUR_8X8_L_48"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "L",
-          "duree": 60,
-          "a": 0.6953,
-          "b": 6150,
-          "c": 0,
-          "code": "PORTEUR_8X8_L_60"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "L",
-          "duree": 72,
-          "a": 0.896,
-          "b": 10050,
-          "c": 0,
-          "code": "PORTEUR_8X8_L_72"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "L",
-          "duree": 84,
-          "a": 1.254,
-          "b": 13036,
-          "c": 0,
-          "code": "PORTEUR_8X8_L_84"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "L",
-          "duree": 96,
-          "a": 1.545,
-          "b": 16260,
-          "c": 0,
-          "code": "PORTEUR_8X8_L_96"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "M",
-          "duree": 24,
-          "a": 0.05096,
-          "b": 1501.5,
-          "c": 0,
-          "code": "PORTEUR_8X8_M_24"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "M",
-          "duree": 36,
-          "a": 0.36036,
-          "b": 2405,
-          "c": 0,
-          "code": "PORTEUR_8X8_M_36"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "M",
-          "duree": 48,
-          "a": 0.5486,
-          "b": 4966,
-          "c": 0,
-          "code": "PORTEUR_8X8_M_48"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "M",
-          "duree": 60,
-          "a": 0.9038900000000001,
-          "b": 7995,
-          "c": 0,
-          "code": "PORTEUR_8X8_M_60"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "M",
-          "duree": 72,
-          "a": 1.1648,
-          "b": 13065,
-          "c": 0,
-          "code": "PORTEUR_8X8_M_72"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "M",
-          "duree": 84,
-          "a": 1.6302,
-          "b": 16946.8,
-          "c": 0,
-          "code": "PORTEUR_8X8_M_84"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "M",
-          "duree": 96,
-          "a": 2.0085,
-          "b": 21138,
-          "c": 0,
-          "code": "PORTEUR_8X8_M_96"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "H",
-          "duree": 24,
-          "a": 0.066248,
-          "b": 1951.95,
-          "c": 0,
-          "code": "PORTEUR_8X8_H_24"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "H",
-          "duree": 36,
-          "a": 0.46846800000000005,
-          "b": 3126.5,
-          "c": 0,
-          "code": "PORTEUR_8X8_H_36"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "H",
-          "duree": 48,
-          "a": 0.71318,
-          "b": 6455.8,
-          "c": 0,
-          "code": "PORTEUR_8X8_H_48"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "H",
-          "duree": 60,
-          "a": 1.1750570000000002,
-          "b": 10393.5,
-          "c": 0,
-          "code": "PORTEUR_8X8_H_60"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "H",
-          "duree": 72,
-          "a": 1.51424,
-          "b": 16984.5,
-          "c": 0,
-          "code": "PORTEUR_8X8_H_72"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "H",
-          "duree": 84,
-          "a": 2.11926,
-          "b": 22030.84,
-          "c": 0,
-          "code": "PORTEUR_8X8_H_84"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "H",
-          "duree": 96,
-          "a": 2.6110500000000005,
-          "b": 27479.4,
-          "c": 0,
-          "code": "PORTEUR_8X8_H_96"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "S",
-          "duree": 24,
-          "a": 0.0861224,
-          "b": 2537.5350000000003,
-          "c": 0,
-          "code": "PORTEUR_8X8_S_24"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "S",
-          "duree": 36,
-          "a": 0.6090084000000001,
-          "b": 4064.4500000000003,
-          "c": 0,
-          "code": "PORTEUR_8X8_S_36"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "S",
-          "duree": 48,
-          "a": 0.9271340000000001,
-          "b": 8392.54,
-          "c": 0,
-          "code": "PORTEUR_8X8_S_48"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "S",
-          "duree": 60,
-          "a": 1.5275741000000003,
-          "b": 13511.550000000001,
-          "c": 0,
-          "code": "PORTEUR_8X8_S_60"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "S",
-          "duree": 72,
-          "a": 1.968512,
-          "b": 22079.850000000002,
-          "c": 0,
-          "code": "PORTEUR_8X8_S_72"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "S",
-          "duree": 84,
-          "a": 2.7550380000000003,
-          "b": 28640.092,
-          "c": 0,
-          "code": "PORTEUR_8X8_S_84"
-        },
-        {
-          "type": "PORTEUR",
-          "silhouette": "8X8",
-          "poc": "S",
-          "duree": 96,
-          "a": 3.394365000000001,
-          "b": 35723.22,
-          "c": 0,
-          "code": "PORTEUR_8X8_S_96"
-        }
-      ]
-    },
-    "K Cab 2.5": {
       "classification_field": "moteur",
       "has_c": false,
       "linear": true,
       "entries": [
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_4X2",
+          "poc": "H",
+          "duree": 36,
+          "a": 0.27876,
+          "b": 1680.64,
+          "code": "DTI-11_PORTEUR_4X2_H_36"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_4X2",
+          "poc": "H",
+          "duree": 48,
+          "a": 0.49995,
+          "b": 4223.82,
+          "code": "DTI-11_PORTEUR_4X2_H_48"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_4X2",
+          "poc": "H",
+          "duree": 60,
+          "a": 0.725584,
+          "b": 5922.64,
+          "code": "DTI-11_PORTEUR_4X2_H_60"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_4X2",
+          "poc": "H",
+          "duree": 72,
+          "a": 1.26755,
+          "b": 7567.93,
+          "code": "DTI-11_PORTEUR_4X2_H_72"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_4X2",
+          "poc": "H",
+          "duree": 84,
+          "a": 1.96748,
+          "b": 9284.223,
+          "code": "DTI-11_PORTEUR_4X2_H_84"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_4X2",
+          "poc": "H",
+          "duree": 96,
+          "a": 2.5773988,
+          "b": 12162.332129999999,
+          "code": "DTI-11_PORTEUR_4X2_H_96"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_4X2",
+          "poc": "M",
+          "duree": 36,
+          "a": 0.21008,
+          "b": 1523.08,
+          "code": "DTI-11_PORTEUR_4X2_M_36"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_4X2",
+          "poc": "M",
+          "duree": 48,
+          "a": 0.409656,
+          "b": 3833.96,
+          "code": "DTI-11_PORTEUR_4X2_M_48"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_4X2",
+          "poc": "M",
+          "duree": 60,
+          "a": 0.47268000000000004,
+          "b": 5188.976000000001,
+          "code": "DTI-11_PORTEUR_4X2_M_60"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_4X2",
+          "poc": "M",
+          "duree": 72,
+          "a": 0.903344,
+          "b": 7058.688,
+          "code": "DTI-11_PORTEUR_4X2_M_72"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_4X2",
+          "poc": "M",
+          "duree": 84,
+          "a": 1.4705599999999999,
+          "b": 7281.3728,
+          "code": "DTI-11_PORTEUR_4X2_M_84"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_4X2",
+          "poc": "M",
+          "duree": 96,
+          "a": 1.9264336,
+          "b": 9538.598368,
+          "code": "DTI-11_PORTEUR_4X2_M_96"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_4X4",
+          "poc": "H",
+          "duree": 24,
+          "a": 0.0557869,
+          "b": 1274.6825000000001,
+          "code": "DTI-11_PORTEUR_4X4_H_24"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_4X4",
+          "poc": "H",
+          "duree": 36,
+          "a": 0.30886440000000004,
+          "b": 2594.6232,
+          "code": "DTI-11_PORTEUR_4X4_H_36"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_4X4",
+          "poc": "H",
+          "duree": 48,
+          "a": 0.5807178000000001,
+          "b": 5180.6274,
+          "code": "DTI-11_PORTEUR_4X4_H_48"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_4X4",
+          "poc": "H",
+          "duree": 60,
+          "a": 1.0186306,
+          "b": 7325.8458,
+          "code": "DTI-11_PORTEUR_4X4_H_60"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_4X4",
+          "poc": "H",
+          "duree": 72,
+          "a": 1.6122769000000001,
+          "b": 10446.177300000001,
+          "code": "DTI-11_PORTEUR_4X4_H_72"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_4X4",
+          "poc": "H",
+          "duree": 84,
+          "a": 2.6711633,
+          "b": 12021.7981,
+          "code": "DTI-11_PORTEUR_4X4_H_84"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_4X4",
+          "poc": "H",
+          "duree": 96,
+          "a": 3.7295933999999997,
+          "b": 13596.354200000002,
+          "code": "DTI-11_PORTEUR_4X4_H_96"
+        },
         {
           "moteur": "DTI-11",
           "silhouette": "PORTEUR_4X4",
@@ -7005,69 +5470,6 @@
         {
           "moteur": "DTI-11",
           "silhouette": "PORTEUR_4X4",
-          "poc": "H",
-          "duree": 24,
-          "a": 0.0557869,
-          "b": 1274.6825000000001,
-          "code": "DTI-11_PORTEUR_4X4_H_24"
-        },
-        {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_4X4",
-          "poc": "H",
-          "duree": 36,
-          "a": 0.30886440000000004,
-          "b": 2594.6232,
-          "code": "DTI-11_PORTEUR_4X4_H_36"
-        },
-        {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_4X4",
-          "poc": "H",
-          "duree": 48,
-          "a": 0.5807178000000001,
-          "b": 5180.6274,
-          "code": "DTI-11_PORTEUR_4X4_H_48"
-        },
-        {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_4X4",
-          "poc": "H",
-          "duree": 60,
-          "a": 1.0186306,
-          "b": 7325.8458,
-          "code": "DTI-11_PORTEUR_4X4_H_60"
-        },
-        {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_4X4",
-          "poc": "H",
-          "duree": 72,
-          "a": 1.6122769000000001,
-          "b": 10446.177300000001,
-          "code": "DTI-11_PORTEUR_4X4_H_72"
-        },
-        {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_4X4",
-          "poc": "H",
-          "duree": 84,
-          "a": 2.6711633,
-          "b": 12021.7981,
-          "code": "DTI-11_PORTEUR_4X4_H_84"
-        },
-        {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_4X4",
-          "poc": "H",
-          "duree": 96,
-          "a": 3.7295933999999997,
-          "b": 13596.354200000002,
-          "code": "DTI-11_PORTEUR_4X4_H_96"
-        },
-        {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_4X4",
           "poc": "S",
           "duree": 24,
           "a": 0.07252297,
@@ -7127,6 +5529,672 @@
           "a": 4.84847142,
           "b": 17675.26046,
           "code": "DTI-11_PORTEUR_4X4_S_96"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X4",
+          "poc": "H",
+          "duree": 36,
+          "a": 0.21412,
+          "b": 2193.72,
+          "code": "DTI-11_PORTEUR_6X4_H_36"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X4",
+          "poc": "H",
+          "duree": 48,
+          "a": 0.47268000000000004,
+          "b": 4436.728,
+          "code": "DTI-11_PORTEUR_6X4_H_48"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X4",
+          "poc": "H",
+          "duree": 60,
+          "a": 0.675488,
+          "b": 6155.344,
+          "code": "DTI-11_PORTEUR_6X4_H_60"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X4",
+          "poc": "H",
+          "duree": 72,
+          "a": 1.217252,
+          "b": 7627.4392,
+          "code": "DTI-11_PORTEUR_6X4_H_72"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X4",
+          "poc": "H",
+          "duree": 84,
+          "a": 2.046462,
+          "b": 9698.121000000001,
+          "code": "DTI-11_PORTEUR_6X4_H_84"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X4",
+          "poc": "H",
+          "duree": 96,
+          "a": 2.68086522,
+          "b": 12704.53851,
+          "code": "DTI-11_PORTEUR_6X4_H_96"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X4",
+          "poc": "M",
+          "duree": 36,
+          "a": 0.15756,
+          "b": 2033.5744,
+          "code": "DTI-11_PORTEUR_6X4_M_36"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X4",
+          "poc": "M",
+          "duree": 48,
+          "a": 0.399152,
+          "b": 3707.912,
+          "code": "DTI-11_PORTEUR_6X4_M_48"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X4",
+          "poc": "M",
+          "duree": 60,
+          "a": 0.47268000000000004,
+          "b": 5454.060600000001,
+          "code": "DTI-11_PORTEUR_6X4_M_60"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X4",
+          "poc": "M",
+          "duree": 72,
+          "a": 0.808808,
+          "b": 7510.36,
+          "code": "DTI-11_PORTEUR_6X4_M_72"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X4",
+          "poc": "M",
+          "duree": 84,
+          "a": 1.2053340000000001,
+          "b": 9143.732,
+          "code": "DTI-11_PORTEUR_6X4_M_84"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X4",
+          "poc": "M",
+          "duree": 96,
+          "a": 1.5789875400000002,
+          "b": 11978.28892,
+          "code": "DTI-11_PORTEUR_6X4_M_96"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "H",
+          "duree": 24,
+          "a": 0.059893600000000005,
+          "b": 1331.6017,
+          "code": "DTI-11_PORTEUR_6X6_H_24"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "H",
+          "duree": 36,
+          "a": 0.059893600000000005,
+          "b": 1595.2417,
+          "code": "DTI-11_PORTEUR_6X6_H_36"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "H",
+          "duree": 48,
+          "a": 0.6243536,
+          "b": 5491.063500000001,
+          "code": "DTI-11_PORTEUR_6X6_H_48"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "H",
+          "duree": 60,
+          "a": 1.0953059,
+          "b": 7776.535,
+          "code": "DTI-11_PORTEUR_6X6_H_60"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "H",
+          "duree": 72,
+          "a": 1.7334330000000002,
+          "b": 11112.8992,
+          "code": "DTI-11_PORTEUR_6X6_H_72"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "H",
+          "duree": 84,
+          "a": 2.8719691000000003,
+          "b": 12787.317400000002,
+          "code": "DTI-11_PORTEUR_6X6_H_84"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "H",
+          "duree": 96,
+          "a": 4.0099475,
+          "b": 14460.8737,
+          "code": "DTI-11_PORTEUR_6X6_H_96"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "L",
+          "duree": 24,
+          "a": 0.03544,
+          "b": 787.93,
+          "code": "DTI-11_PORTEUR_6X6_L_24"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "L",
+          "duree": 36,
+          "a": 0.03544,
+          "b": 943.93,
+          "code": "DTI-11_PORTEUR_6X6_L_36"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "L",
+          "duree": 48,
+          "a": 0.36944,
+          "b": 3249.15,
+          "code": "DTI-11_PORTEUR_6X6_L_48"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "L",
+          "duree": 60,
+          "a": 0.64811,
+          "b": 4601.5,
+          "code": "DTI-11_PORTEUR_6X6_L_60"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "L",
+          "duree": 72,
+          "a": 1.0257,
+          "b": 6575.68,
+          "code": "DTI-11_PORTEUR_6X6_L_72"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "L",
+          "duree": 84,
+          "a": 1.69939,
+          "b": 7566.46,
+          "code": "DTI-11_PORTEUR_6X6_L_84"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "L",
+          "duree": 96,
+          "a": 2.37275,
+          "b": 8556.73,
+          "code": "DTI-11_PORTEUR_6X6_L_96"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "M",
+          "duree": 24,
+          "a": 0.046072,
+          "b": 1024.309,
+          "code": "DTI-11_PORTEUR_6X6_M_24"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "M",
+          "duree": 36,
+          "a": 0.046072,
+          "b": 1227.109,
+          "code": "DTI-11_PORTEUR_6X6_M_36"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "M",
+          "duree": 48,
+          "a": 0.480272,
+          "b": 4223.895,
+          "code": "DTI-11_PORTEUR_6X6_M_48"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "M",
+          "duree": 60,
+          "a": 0.8425429999999999,
+          "b": 5981.95,
+          "code": "DTI-11_PORTEUR_6X6_M_60"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "M",
+          "duree": 72,
+          "a": 1.3334100000000002,
+          "b": 8548.384,
+          "code": "DTI-11_PORTEUR_6X6_M_72"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "M",
+          "duree": 84,
+          "a": 2.209207,
+          "b": 9836.398000000001,
+          "code": "DTI-11_PORTEUR_6X6_M_84"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "M",
+          "duree": 96,
+          "a": 3.084575,
+          "b": 11123.749,
+          "code": "DTI-11_PORTEUR_6X6_M_96"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "S",
+          "duree": 24,
+          "a": 0.07786168,
+          "b": 1731.08221,
+          "code": "DTI-11_PORTEUR_6X6_S_24"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "S",
+          "duree": 36,
+          "a": 0.07786168,
+          "b": 2073.81421,
+          "code": "DTI-11_PORTEUR_6X6_S_36"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "S",
+          "duree": 48,
+          "a": 0.81165968,
+          "b": 7138.382550000002,
+          "code": "DTI-11_PORTEUR_6X6_S_48"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "S",
+          "duree": 60,
+          "a": 1.4238976700000001,
+          "b": 10109.4955,
+          "code": "DTI-11_PORTEUR_6X6_S_60"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "S",
+          "duree": 72,
+          "a": 2.2534629,
+          "b": 14446.76896,
+          "code": "DTI-11_PORTEUR_6X6_S_72"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "S",
+          "duree": 84,
+          "a": 3.7335598300000004,
+          "b": 16623.51262,
+          "code": "DTI-11_PORTEUR_6X6_S_84"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "S",
+          "duree": 96,
+          "a": 5.21293175,
+          "b": 18799.13581,
+          "code": "DTI-11_PORTEUR_6X6_S_96"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_8X4",
+          "poc": "H",
+          "duree": 36,
+          "a": 0.240784,
+          "b": 2267.8136,
+          "code": "DTI-11_PORTEUR_8X4_H_36"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_8X4",
+          "poc": "H",
+          "duree": 48,
+          "a": 0.48399200000000003,
+          "b": 4593.4800000000005,
+          "code": "DTI-11_PORTEUR_8X4_H_48"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_8X4",
+          "poc": "H",
+          "duree": 60,
+          "a": 0.706192,
+          "b": 6354.112,
+          "code": "DTI-11_PORTEUR_8X4_H_60"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_8X4",
+          "poc": "H",
+          "duree": 72,
+          "a": 1.2778520000000002,
+          "b": 8111.512,
+          "code": "DTI-11_PORTEUR_8X4_H_72"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_8X4",
+          "poc": "H",
+          "duree": 84,
+          "a": 2.143725,
+          "b": 10137.37,
+          "code": "DTI-11_PORTEUR_8X4_H_84"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_8X4",
+          "poc": "H",
+          "duree": 96,
+          "a": 2.80827975,
+          "b": 13279.954700000002,
+          "code": "DTI-11_PORTEUR_8X4_H_96"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_8X4",
+          "poc": "M",
+          "duree": 36,
+          "a": 0.16806400000000002,
+          "b": 2129.08,
+          "code": "DTI-11_PORTEUR_8X4_M_36"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_8X4",
+          "poc": "M",
+          "duree": 48,
+          "a": 0.420968,
+          "b": 3890.52,
+          "code": "DTI-11_PORTEUR_8X4_M_48"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_8X4",
+          "poc": "M",
+          "duree": 60,
+          "a": 0.512272,
+          "b": 5676.8464,
+          "code": "DTI-11_PORTEUR_8X4_M_60"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_8X4",
+          "poc": "M",
+          "duree": 72,
+          "a": 0.8888,
+          "b": 7177.06,
+          "code": "DTI-11_PORTEUR_8X4_M_72"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_8X4",
+          "poc": "M",
+          "duree": 84,
+          "a": 1.245532,
+          "b": 9470.77,
+          "code": "DTI-11_PORTEUR_8X4_M_84"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "PORTEUR_8X4",
+          "poc": "M",
+          "duree": 96,
+          "a": 1.6316469200000001,
+          "b": 12406.708700000001,
+          "code": "DTI-11_PORTEUR_8X4_M_96"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "TRACTEUR_4X2",
+          "poc": "H",
+          "duree": 36,
+          "a": 0.27876,
+          "b": 2115.748,
+          "code": "DTI-11_TRACTEUR_4X2_H_36"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "TRACTEUR_4X2",
+          "poc": "H",
+          "duree": 48,
+          "a": 0.482376,
+          "b": 5016.872,
+          "code": "DTI-11_TRACTEUR_4X2_H_48"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "TRACTEUR_4X2",
+          "poc": "H",
+          "duree": 60,
+          "a": 0.71912,
+          "b": 6121.61,
+          "code": "DTI-11_TRACTEUR_4X2_H_60"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "TRACTEUR_4X2",
+          "poc": "H",
+          "duree": 72,
+          "a": 1.2394720000000001,
+          "b": 7932.54,
+          "code": "DTI-11_TRACTEUR_4X2_H_72"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "TRACTEUR_4X2",
+          "poc": "H",
+          "duree": 84,
+          "a": 2.06141,
+          "b": 9508.14,
+          "code": "DTI-11_TRACTEUR_4X2_H_84"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "TRACTEUR_4X2",
+          "poc": "H",
+          "duree": 96,
+          "a": 2.7004471,
+          "b": 12455.6634,
+          "code": "DTI-11_TRACTEUR_4X2_H_96"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "TRACTEUR_4X2",
+          "poc": "M",
+          "duree": 36,
+          "a": 0.23108800000000002,
+          "b": 1741.24,
+          "code": "DTI-11_TRACTEUR_4X2_M_36"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "TRACTEUR_4X2",
+          "poc": "M",
+          "duree": 48,
+          "a": 0.409656,
+          "b": 3602.872,
+          "code": "DTI-11_TRACTEUR_4X2_M_48"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "TRACTEUR_4X2",
+          "poc": "M",
+          "duree": 60,
+          "a": 0.5227759999999999,
+          "b": 5041.92,
+          "code": "DTI-11_TRACTEUR_4X2_M_60"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "TRACTEUR_4X2",
+          "poc": "M",
+          "duree": 72,
+          "a": 0.882336,
+          "b": 7235.1552,
+          "code": "DTI-11_TRACTEUR_4X2_M_72"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "TRACTEUR_4X2",
+          "poc": "M",
+          "duree": 84,
+          "a": 1.371984,
+          "b": 8326.5208,
+          "code": "DTI-11_TRACTEUR_4X2_M_84"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "TRACTEUR_4X2",
+          "poc": "M",
+          "duree": 96,
+          "a": 1.7972990400000002,
+          "b": 10907.742248,
+          "code": "DTI-11_TRACTEUR_4X2_M_96"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "TRACTEUR_6X4",
+          "poc": "H",
+          "duree": 36,
+          "a": 0.2626,
+          "b": 2620.748,
+          "code": "DTI-11_TRACTEUR_6X4_H_36"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "TRACTEUR_6X4",
+          "poc": "H",
+          "duree": 48,
+          "a": 0.46217600000000003,
+          "b": 4915.872,
+          "code": "DTI-11_TRACTEUR_6X4_H_48"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "TRACTEUR_6X4",
+          "poc": "H",
+          "duree": 60,
+          "a": 1.1029200000000001,
+          "b": 5819.216,
+          "code": "DTI-11_TRACTEUR_6X4_H_60"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "TRACTEUR_6X4",
+          "poc": "H",
+          "duree": 72,
+          "a": 1.2394720000000001,
+          "b": 8437.8632,
+          "code": "DTI-11_TRACTEUR_6X4_H_72"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "TRACTEUR_6X4",
+          "poc": "H",
+          "duree": 84,
+          "a": 1.371984,
+          "b": 10043.5208,
+          "code": "DTI-11_TRACTEUR_6X4_H_84"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "TRACTEUR_6X4",
+          "poc": "H",
+          "duree": 96,
+          "a": 1.7972990400000002,
+          "b": 13157.012248,
+          "code": "DTI-11_TRACTEUR_6X4_H_96"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "TRACTEUR_6X4",
+          "poc": "M",
+          "duree": 36,
+          "a": 0.21008,
+          "b": 2941.12,
+          "code": "DTI-11_TRACTEUR_6X4_M_36"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "TRACTEUR_6X4",
+          "poc": "M",
+          "duree": 48,
+          "a": 0.47268000000000004,
+          "b": 3823.456,
+          "code": "DTI-11_TRACTEUR_6X4_M_48"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "TRACTEUR_6X4",
+          "poc": "M",
+          "duree": 60,
+          "a": 0.724776,
+          "b": 5167.968,
+          "code": "DTI-11_TRACTEUR_6X4_M_60"
+        },
+        {
+          "moteur": "DTI-11",
+          "silhouette": "TRACTEUR_6X4",
+          "poc": "M",
+          "duree": 72,
+          "a": 0.882336,
+          "b": 7235.1552,
+          "code": "DTI-11_TRACTEUR_6X4_M_72"
         },
         {
           "moteur": "DTI-11",
@@ -7381,256 +6449,175 @@
           "code": "DTI-11_TRACTEUR_6X6_S_96"
         },
         {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
-          "poc": "L",
-          "duree": 24,
-          "a": 0.03544,
-          "b": 787.93,
-          "code": "DTI-11_PORTEUR_6X6_L_24"
-        },
-        {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
-          "poc": "L",
-          "duree": 36,
-          "a": 0.03544,
-          "b": 943.93,
-          "code": "DTI-11_PORTEUR_6X6_L_36"
-        },
-        {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
-          "poc": "L",
-          "duree": 48,
-          "a": 0.36944,
-          "b": 3249.15,
-          "code": "DTI-11_PORTEUR_6X6_L_48"
-        },
-        {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
-          "poc": "L",
-          "duree": 60,
-          "a": 0.64811,
-          "b": 4601.5,
-          "code": "DTI-11_PORTEUR_6X6_L_60"
-        },
-        {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
-          "poc": "L",
-          "duree": 72,
-          "a": 1.0257,
-          "b": 6575.68,
-          "code": "DTI-11_PORTEUR_6X6_L_72"
-        },
-        {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
-          "poc": "L",
-          "duree": 84,
-          "a": 1.69939,
-          "b": 7566.46,
-          "code": "DTI-11_PORTEUR_6X6_L_84"
-        },
-        {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
-          "poc": "L",
-          "duree": 96,
-          "a": 2.37275,
-          "b": 8556.73,
-          "code": "DTI-11_PORTEUR_6X6_L_96"
-        },
-        {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
-          "poc": "M",
-          "duree": 24,
-          "a": 0.046072,
-          "b": 1024.309,
-          "code": "DTI-11_PORTEUR_6X6_M_24"
-        },
-        {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
-          "poc": "M",
-          "duree": 36,
-          "a": 0.046072,
-          "b": 1227.109,
-          "code": "DTI-11_PORTEUR_6X6_M_36"
-        },
-        {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
-          "poc": "M",
-          "duree": 48,
-          "a": 0.480272,
-          "b": 4223.895,
-          "code": "DTI-11_PORTEUR_6X6_M_48"
-        },
-        {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
-          "poc": "M",
-          "duree": 60,
-          "a": 0.8425429999999999,
-          "b": 5981.95,
-          "code": "DTI-11_PORTEUR_6X6_M_60"
-        },
-        {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
-          "poc": "M",
-          "duree": 72,
-          "a": 1.3334100000000002,
-          "b": 8548.384,
-          "code": "DTI-11_PORTEUR_6X6_M_72"
-        },
-        {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
-          "poc": "M",
-          "duree": 84,
-          "a": 2.209207,
-          "b": 9836.398000000001,
-          "code": "DTI-11_PORTEUR_6X6_M_84"
-        },
-        {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
-          "poc": "M",
-          "duree": 96,
-          "a": 3.084575,
-          "b": 11123.749,
-          "code": "DTI-11_PORTEUR_6X6_M_96"
-        },
-        {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
-          "poc": "H",
-          "duree": 24,
-          "a": 0.059893600000000005,
-          "b": 1331.6017,
-          "code": "DTI-11_PORTEUR_6X6_H_24"
-        },
-        {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_4X2",
           "poc": "H",
           "duree": 36,
-          "a": 0.059893600000000005,
-          "b": 1595.2417,
-          "code": "DTI-11_PORTEUR_6X6_H_36"
+          "a": 0.27876,
+          "b": 1680.64,
+          "code": "DTI-13_PORTEUR_4X2_H_36"
         },
         {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_4X2",
           "poc": "H",
           "duree": 48,
-          "a": 0.6243536,
-          "b": 5491.063500000001,
-          "code": "DTI-11_PORTEUR_6X6_H_48"
+          "a": 0.49995,
+          "b": 4223.82,
+          "code": "DTI-13_PORTEUR_4X2_H_48"
         },
         {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_4X2",
           "poc": "H",
           "duree": 60,
-          "a": 1.0953059,
-          "b": 7776.535,
-          "code": "DTI-11_PORTEUR_6X6_H_60"
+          "a": 0.725584,
+          "b": 5922.64,
+          "code": "DTI-13_PORTEUR_4X2_H_60"
         },
         {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_4X2",
           "poc": "H",
           "duree": 72,
-          "a": 1.7334330000000002,
-          "b": 11112.8992,
-          "code": "DTI-11_PORTEUR_6X6_H_72"
+          "a": 1.26755,
+          "b": 7567.93,
+          "code": "DTI-13_PORTEUR_4X2_H_72"
         },
         {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_4X2",
           "poc": "H",
           "duree": 84,
-          "a": 2.8719691000000003,
-          "b": 12787.317400000002,
-          "code": "DTI-11_PORTEUR_6X6_H_84"
+          "a": 1.96748,
+          "b": 9284.223,
+          "code": "DTI-13_PORTEUR_4X2_H_84"
         },
         {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_4X2",
           "poc": "H",
           "duree": 96,
-          "a": 4.0099475,
-          "b": 14460.8737,
-          "code": "DTI-11_PORTEUR_6X6_H_96"
+          "a": 2.5773988,
+          "b": 12162.332129999999,
+          "code": "DTI-13_PORTEUR_4X2_H_96"
         },
         {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
-          "poc": "S",
-          "duree": 24,
-          "a": 0.07786168,
-          "b": 1731.08221,
-          "code": "DTI-11_PORTEUR_6X6_S_24"
-        },
-        {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
-          "poc": "S",
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_4X2",
+          "poc": "M",
           "duree": 36,
-          "a": 0.07786168,
-          "b": 2073.81421,
-          "code": "DTI-11_PORTEUR_6X6_S_36"
+          "a": 0.21008,
+          "b": 1523.08,
+          "code": "DTI-13_PORTEUR_4X2_M_36"
         },
         {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
-          "poc": "S",
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_4X2",
+          "poc": "M",
           "duree": 48,
-          "a": 0.81165968,
-          "b": 7138.382550000002,
-          "code": "DTI-11_PORTEUR_6X6_S_48"
+          "a": 0.409656,
+          "b": 3833.96,
+          "code": "DTI-13_PORTEUR_4X2_M_48"
         },
         {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
-          "poc": "S",
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_4X2",
+          "poc": "M",
           "duree": 60,
-          "a": 1.4238976700000001,
-          "b": 10109.4955,
-          "code": "DTI-11_PORTEUR_6X6_S_60"
+          "a": 0.47268000000000004,
+          "b": 5188.976000000001,
+          "code": "DTI-13_PORTEUR_4X2_M_60"
         },
         {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
-          "poc": "S",
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_4X2",
+          "poc": "M",
           "duree": 72,
-          "a": 2.2534629,
-          "b": 14446.76896,
-          "code": "DTI-11_PORTEUR_6X6_S_72"
+          "a": 0.903344,
+          "b": 7058.688,
+          "code": "DTI-13_PORTEUR_4X2_M_72"
         },
         {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
-          "poc": "S",
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_4X2",
+          "poc": "M",
           "duree": 84,
-          "a": 3.7335598300000004,
-          "b": 16623.51262,
-          "code": "DTI-11_PORTEUR_6X6_S_84"
+          "a": 1.4705599999999999,
+          "b": 7281.3728,
+          "code": "DTI-13_PORTEUR_4X2_M_84"
         },
         {
-          "moteur": "DTI-11",
-          "silhouette": "PORTEUR_6X6",
-          "poc": "S",
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_4X2",
+          "poc": "M",
           "duree": 96,
-          "a": 5.21293175,
-          "b": 18799.13581,
-          "code": "DTI-11_PORTEUR_6X6_S_96"
+          "a": 1.9264336,
+          "b": 9538.598368,
+          "code": "DTI-13_PORTEUR_4X2_M_96"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_4X4",
+          "poc": "H",
+          "duree": 24,
+          "a": 0.0546039,
+          "b": 1809.8041000000003,
+          "code": "DTI-13_PORTEUR_4X4_H_24"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_4X4",
+          "poc": "H",
+          "duree": 36,
+          "a": 0.3017664,
+          "b": 3380.8957,
+          "code": "DTI-13_PORTEUR_4X4_H_36"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_4X4",
+          "poc": "H",
+          "duree": 48,
+          "a": 0.5670964000000001,
+          "b": 6190.0475,
+          "code": "DTI-13_PORTEUR_4X4_H_48"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_4X4",
+          "poc": "H",
+          "duree": 60,
+          "a": 0.9947002,
+          "b": 8568.7056,
+          "code": "DTI-13_PORTEUR_4X4_H_60"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_4X4",
+          "poc": "H",
+          "duree": 72,
+          "a": 1.5745054000000003,
+          "b": 11898.1408,
+          "code": "DTI-13_PORTEUR_4X4_H_72"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_4X4",
+          "poc": "H",
+          "duree": 84,
+          "a": 2.6086671000000003,
+          "b": 13719.910100000001,
+          "code": "DTI-13_PORTEUR_4X4_H_84"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_4X4",
+          "poc": "H",
+          "duree": 96,
+          "a": 3.6421359000000004,
+          "b": 15540.935800000001,
+          "code": "DTI-13_PORTEUR_4X4_H_96"
         },
         {
           "moteur": "DTI-13",
@@ -7760,66 +6747,174 @@
         },
         {
           "moteur": "DTI-13",
-          "silhouette": "PORTEUR_4X4",
-          "poc": "H",
-          "duree": 24,
-          "a": 0.0546039,
-          "b": 1809.8041000000003,
-          "code": "DTI-13_PORTEUR_4X4_H_24"
-        },
-        {
-          "moteur": "DTI-13",
-          "silhouette": "PORTEUR_4X4",
+          "silhouette": "PORTEUR_6X4",
           "poc": "H",
           "duree": 36,
-          "a": 0.3017664,
-          "b": 3380.8957,
-          "code": "DTI-13_PORTEUR_4X4_H_36"
+          "a": 0.21412,
+          "b": 2193.72,
+          "code": "DTI-13_PORTEUR_6X4_H_36"
         },
         {
           "moteur": "DTI-13",
-          "silhouette": "PORTEUR_4X4",
+          "silhouette": "PORTEUR_6X4",
           "poc": "H",
           "duree": 48,
-          "a": 0.5670964000000001,
-          "b": 6190.0475,
-          "code": "DTI-13_PORTEUR_4X4_H_48"
+          "a": 0.47268000000000004,
+          "b": 4436.728,
+          "code": "DTI-13_PORTEUR_6X4_H_48"
         },
         {
           "moteur": "DTI-13",
-          "silhouette": "PORTEUR_4X4",
+          "silhouette": "PORTEUR_6X4",
           "poc": "H",
           "duree": 60,
-          "a": 0.9947002,
-          "b": 8568.7056,
-          "code": "DTI-13_PORTEUR_4X4_H_60"
+          "a": 0.675488,
+          "b": 6155.344,
+          "code": "DTI-13_PORTEUR_6X4_H_60"
         },
         {
           "moteur": "DTI-13",
-          "silhouette": "PORTEUR_4X4",
+          "silhouette": "PORTEUR_6X4",
           "poc": "H",
           "duree": 72,
-          "a": 1.5745054000000003,
-          "b": 11898.1408,
-          "code": "DTI-13_PORTEUR_4X4_H_72"
+          "a": 1.217252,
+          "b": 7627.4392,
+          "code": "DTI-13_PORTEUR_6X4_H_72"
         },
         {
           "moteur": "DTI-13",
-          "silhouette": "PORTEUR_4X4",
+          "silhouette": "PORTEUR_6X4",
           "poc": "H",
           "duree": 84,
-          "a": 2.6086671000000003,
-          "b": 13719.910100000001,
-          "code": "DTI-13_PORTEUR_4X4_H_84"
+          "a": 2.046462,
+          "b": 9698.121000000001,
+          "code": "DTI-13_PORTEUR_6X4_H_84"
         },
         {
           "moteur": "DTI-13",
-          "silhouette": "PORTEUR_4X4",
+          "silhouette": "PORTEUR_6X4",
           "poc": "H",
           "duree": 96,
-          "a": 3.6421359000000004,
-          "b": 15540.935800000001,
-          "code": "DTI-13_PORTEUR_4X4_H_96"
+          "a": 2.68086522,
+          "b": 12704.53851,
+          "code": "DTI-13_PORTEUR_6X4_H_96"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_6X4",
+          "poc": "M",
+          "duree": 36,
+          "a": 0.15756,
+          "b": 2033.5744,
+          "code": "DTI-13_PORTEUR_6X4_M_36"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_6X4",
+          "poc": "M",
+          "duree": 48,
+          "a": 0.399152,
+          "b": 3707.912,
+          "code": "DTI-13_PORTEUR_6X4_M_48"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_6X4",
+          "poc": "M",
+          "duree": 60,
+          "a": 0.47268000000000004,
+          "b": 5454.060600000001,
+          "code": "DTI-13_PORTEUR_6X4_M_60"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_6X4",
+          "poc": "M",
+          "duree": 72,
+          "a": 0.808808,
+          "b": 7510.36,
+          "code": "DTI-13_PORTEUR_6X4_M_72"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_6X4",
+          "poc": "M",
+          "duree": 84,
+          "a": 1.2053340000000001,
+          "b": 9143.732,
+          "code": "DTI-13_PORTEUR_6X4_M_84"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_6X4",
+          "poc": "M",
+          "duree": 96,
+          "a": 1.5789875400000002,
+          "b": 11978.28892,
+          "code": "DTI-13_PORTEUR_6X4_M_96"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "H",
+          "duree": 24,
+          "a": 0.057476900000000004,
+          "b": 1877.4379000000004,
+          "code": "DTI-13_PORTEUR_6X6_H_24"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "H",
+          "duree": 36,
+          "a": 0.31760170000000004,
+          "b": 3517.785700000001,
+          "code": "DTI-13_PORTEUR_6X6_H_36"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "H",
+          "duree": 48,
+          "a": 0.5968911,
+          "b": 6460.920700000001,
+          "code": "DTI-13_PORTEUR_6X6_H_48"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "H",
+          "duree": 60,
+          "a": 1.0470057000000002,
+          "b": 8950.578000000001,
+          "code": "DTI-13_PORTEUR_6X6_H_60"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "H",
+          "duree": 72,
+          "a": 1.6575351000000003,
+          "b": 12440.0224,
+          "code": "DTI-13_PORTEUR_6X6_H_72"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "H",
+          "duree": 84,
+          "a": 2.7458782,
+          "b": 14345.176300000001,
+          "code": "DTI-13_PORTEUR_6X6_H_84"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_6X6",
+          "poc": "H",
+          "duree": 96,
+          "a": 3.8340016000000006,
+          "b": 16247.136100000002,
+          "code": "DTI-13_PORTEUR_6X6_H_96"
         },
         {
           "moteur": "DTI-13",
@@ -7949,66 +7044,174 @@
         },
         {
           "moteur": "DTI-13",
-          "silhouette": "PORTEUR_6X6",
-          "poc": "H",
-          "duree": 24,
-          "a": 0.057476900000000004,
-          "b": 1877.4379000000004,
-          "code": "DTI-13_PORTEUR_6X6_H_24"
-        },
-        {
-          "moteur": "DTI-13",
-          "silhouette": "PORTEUR_6X6",
+          "silhouette": "PORTEUR_8X4",
           "poc": "H",
           "duree": 36,
-          "a": 0.31760170000000004,
-          "b": 3517.785700000001,
-          "code": "DTI-13_PORTEUR_6X6_H_36"
+          "a": 0.240784,
+          "b": 2267.8136,
+          "code": "DTI-13_PORTEUR_8X4_H_36"
         },
         {
           "moteur": "DTI-13",
-          "silhouette": "PORTEUR_6X6",
+          "silhouette": "PORTEUR_8X4",
           "poc": "H",
           "duree": 48,
-          "a": 0.5968911,
-          "b": 6460.920700000001,
-          "code": "DTI-13_PORTEUR_6X6_H_48"
+          "a": 0.48399200000000003,
+          "b": 4593.4800000000005,
+          "code": "DTI-13_PORTEUR_8X4_H_48"
         },
         {
           "moteur": "DTI-13",
-          "silhouette": "PORTEUR_6X6",
+          "silhouette": "PORTEUR_8X4",
           "poc": "H",
           "duree": 60,
-          "a": 1.0470057000000002,
-          "b": 8950.578000000001,
-          "code": "DTI-13_PORTEUR_6X6_H_60"
+          "a": 0.706192,
+          "b": 6354.112,
+          "code": "DTI-13_PORTEUR_8X4_H_60"
         },
         {
           "moteur": "DTI-13",
-          "silhouette": "PORTEUR_6X6",
+          "silhouette": "PORTEUR_8X4",
           "poc": "H",
           "duree": 72,
-          "a": 1.6575351000000003,
-          "b": 12440.0224,
-          "code": "DTI-13_PORTEUR_6X6_H_72"
+          "a": 1.2778520000000002,
+          "b": 8111.512,
+          "code": "DTI-13_PORTEUR_8X4_H_72"
         },
         {
           "moteur": "DTI-13",
-          "silhouette": "PORTEUR_6X6",
+          "silhouette": "PORTEUR_8X4",
           "poc": "H",
           "duree": 84,
-          "a": 2.7458782,
-          "b": 14345.176300000001,
-          "code": "DTI-13_PORTEUR_6X6_H_84"
+          "a": 2.143725,
+          "b": 10137.37,
+          "code": "DTI-13_PORTEUR_8X4_H_84"
         },
         {
           "moteur": "DTI-13",
-          "silhouette": "PORTEUR_6X6",
+          "silhouette": "PORTEUR_8X4",
           "poc": "H",
           "duree": 96,
-          "a": 3.8340016000000006,
-          "b": 16247.136100000002,
-          "code": "DTI-13_PORTEUR_6X6_H_96"
+          "a": 2.80827975,
+          "b": 13279.954700000002,
+          "code": "DTI-13_PORTEUR_8X4_H_96"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_8X4",
+          "poc": "M",
+          "duree": 36,
+          "a": 0.16806400000000002,
+          "b": 2129.08,
+          "code": "DTI-13_PORTEUR_8X4_M_36"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_8X4",
+          "poc": "M",
+          "duree": 48,
+          "a": 0.420968,
+          "b": 3890.52,
+          "code": "DTI-13_PORTEUR_8X4_M_48"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_8X4",
+          "poc": "M",
+          "duree": 60,
+          "a": 0.512272,
+          "b": 5676.8464,
+          "code": "DTI-13_PORTEUR_8X4_M_60"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_8X4",
+          "poc": "M",
+          "duree": 72,
+          "a": 0.8888,
+          "b": 7177.06,
+          "code": "DTI-13_PORTEUR_8X4_M_72"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_8X4",
+          "poc": "M",
+          "duree": 84,
+          "a": 1.245532,
+          "b": 9470.77,
+          "code": "DTI-13_PORTEUR_8X4_M_84"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_8X4",
+          "poc": "M",
+          "duree": 96,
+          "a": 1.6316469200000001,
+          "b": 12406.708700000001,
+          "code": "DTI-13_PORTEUR_8X4_M_96"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_8X8",
+          "poc": "H",
+          "duree": 24,
+          "a": 0.0629187,
+          "b": 2002.1092,
+          "code": "DTI-13_PORTEUR_8X8_H_24"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_8X8",
+          "poc": "H",
+          "duree": 36,
+          "a": 0.34714290000000003,
+          "b": 3770.4745000000003,
+          "code": "DTI-13_PORTEUR_8X8_H_36"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_8X8",
+          "poc": "H",
+          "duree": 48,
+          "a": 0.6523062000000001,
+          "b": 6962.5803000000005,
+          "code": "DTI-13_PORTEUR_8X8_H_48"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_8X8",
+          "poc": "H",
+          "duree": 60,
+          "a": 1.1443328000000001,
+          "b": 9658.4176,
+          "code": "DTI-13_PORTEUR_8X8_H_60"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_8X8",
+          "poc": "H",
+          "duree": 72,
+          "a": 1.8113589,
+          "b": 13449.104500000001,
+          "code": "DTI-13_PORTEUR_8X8_H_72"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_8X8",
+          "poc": "H",
+          "duree": 84,
+          "a": 3.0009330000000003,
+          "b": 15505.665500000003,
+          "code": "DTI-13_PORTEUR_8X8_H_84"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "PORTEUR_8X8",
+          "poc": "H",
+          "duree": 96,
+          "a": 4.1900508,
+          "b": 17559.4549,
+          "code": "DTI-13_PORTEUR_8X8_H_96"
         },
         {
           "moteur": "DTI-13",
@@ -8138,66 +7341,201 @@
         },
         {
           "moteur": "DTI-13",
-          "silhouette": "PORTEUR_8X8",
-          "poc": "H",
-          "duree": 24,
-          "a": 0.0629187,
-          "b": 2002.1092,
-          "code": "DTI-13_PORTEUR_8X8_H_24"
-        },
-        {
-          "moteur": "DTI-13",
-          "silhouette": "PORTEUR_8X8",
+          "silhouette": "TRACTEUR_4X2",
           "poc": "H",
           "duree": 36,
-          "a": 0.34714290000000003,
-          "b": 3770.4745000000003,
-          "code": "DTI-13_PORTEUR_8X8_H_36"
+          "a": 0.27876,
+          "b": 2115.748,
+          "code": "DTI-13_TRACTEUR_4X2_H_36"
         },
         {
           "moteur": "DTI-13",
-          "silhouette": "PORTEUR_8X8",
+          "silhouette": "TRACTEUR_4X2",
           "poc": "H",
           "duree": 48,
-          "a": 0.6523062000000001,
-          "b": 6962.5803000000005,
-          "code": "DTI-13_PORTEUR_8X8_H_48"
+          "a": 0.482376,
+          "b": 5016.872,
+          "code": "DTI-13_TRACTEUR_4X2_H_48"
         },
         {
           "moteur": "DTI-13",
-          "silhouette": "PORTEUR_8X8",
+          "silhouette": "TRACTEUR_4X2",
           "poc": "H",
           "duree": 60,
-          "a": 1.1443328000000001,
-          "b": 9658.4176,
-          "code": "DTI-13_PORTEUR_8X8_H_60"
+          "a": 0.71912,
+          "b": 6121.61,
+          "code": "DTI-13_TRACTEUR_4X2_H_60"
         },
         {
           "moteur": "DTI-13",
-          "silhouette": "PORTEUR_8X8",
+          "silhouette": "TRACTEUR_4X2",
           "poc": "H",
           "duree": 72,
-          "a": 1.8113589,
-          "b": 13449.104500000001,
-          "code": "DTI-13_PORTEUR_8X8_H_72"
+          "a": 1.2394720000000001,
+          "b": 7932.54,
+          "code": "DTI-13_TRACTEUR_4X2_H_72"
         },
         {
           "moteur": "DTI-13",
-          "silhouette": "PORTEUR_8X8",
+          "silhouette": "TRACTEUR_4X2",
           "poc": "H",
           "duree": 84,
-          "a": 3.0009330000000003,
-          "b": 15505.665500000003,
-          "code": "DTI-13_PORTEUR_8X8_H_84"
+          "a": 2.06141,
+          "b": 9508.14,
+          "code": "DTI-13_TRACTEUR_4X2_H_84"
         },
         {
           "moteur": "DTI-13",
-          "silhouette": "PORTEUR_8X8",
+          "silhouette": "TRACTEUR_4X2",
           "poc": "H",
           "duree": 96,
-          "a": 4.1900508,
-          "b": 17559.4549,
-          "code": "DTI-13_PORTEUR_8X8_H_96"
+          "a": 2.7004471,
+          "b": 12455.6634,
+          "code": "DTI-13_TRACTEUR_4X2_H_96"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "TRACTEUR_4X2",
+          "poc": "M",
+          "duree": 36,
+          "a": 0.23108800000000002,
+          "b": 1741.24,
+          "code": "DTI-13_TRACTEUR_4X2_M_36"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "TRACTEUR_4X2",
+          "poc": "M",
+          "duree": 48,
+          "a": 0.409656,
+          "b": 3602.872,
+          "code": "DTI-13_TRACTEUR_4X2_M_48"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "TRACTEUR_4X2",
+          "poc": "M",
+          "duree": 60,
+          "a": 0.5227759999999999,
+          "b": 5041.92,
+          "code": "DTI-13_TRACTEUR_4X2_M_60"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "TRACTEUR_4X2",
+          "poc": "M",
+          "duree": 72,
+          "a": 0.882336,
+          "b": 7235.1552,
+          "code": "DTI-13_TRACTEUR_4X2_M_72"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "TRACTEUR_4X2",
+          "poc": "M",
+          "duree": 84,
+          "a": 1.371984,
+          "b": 8326.5208,
+          "code": "DTI-13_TRACTEUR_4X2_M_84"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "TRACTEUR_4X2",
+          "poc": "M",
+          "duree": 96,
+          "a": 1.7972990400000002,
+          "b": 10907.742248,
+          "code": "DTI-13_TRACTEUR_4X2_M_96"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "TRACTEUR_6X4",
+          "poc": "H",
+          "duree": 36,
+          "a": 0.2626,
+          "b": 2620.748,
+          "code": "DTI-13_TRACTEUR_6X4_H_36"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "TRACTEUR_6X4",
+          "poc": "H",
+          "duree": 48,
+          "a": 0.46217600000000003,
+          "b": 4915.872,
+          "code": "DTI-13_TRACTEUR_6X4_H_48"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "TRACTEUR_6X4",
+          "poc": "H",
+          "duree": 60,
+          "a": 1.1029200000000001,
+          "b": 5819.216,
+          "code": "DTI-13_TRACTEUR_6X4_H_60"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "TRACTEUR_6X4",
+          "poc": "H",
+          "duree": 72,
+          "a": 1.2394720000000001,
+          "b": 8437.8632,
+          "code": "DTI-13_TRACTEUR_6X4_H_72"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "TRACTEUR_6X4",
+          "poc": "H",
+          "duree": 84,
+          "a": 1.371984,
+          "b": 10043.5208,
+          "code": "DTI-13_TRACTEUR_6X4_H_84"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "TRACTEUR_6X4",
+          "poc": "H",
+          "duree": 96,
+          "a": 1.7972990400000002,
+          "b": 13157.012248,
+          "code": "DTI-13_TRACTEUR_6X4_H_96"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "TRACTEUR_6X4",
+          "poc": "M",
+          "duree": 36,
+          "a": 0.21008,
+          "b": 2941.12,
+          "code": "DTI-13_TRACTEUR_6X4_M_36"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "TRACTEUR_6X4",
+          "poc": "M",
+          "duree": 48,
+          "a": 0.47268000000000004,
+          "b": 3823.456,
+          "code": "DTI-13_TRACTEUR_6X4_M_48"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "TRACTEUR_6X4",
+          "poc": "M",
+          "duree": 60,
+          "a": 0.724776,
+          "b": 5167.968,
+          "code": "DTI-13_TRACTEUR_6X4_M_60"
+        },
+        {
+          "moteur": "DTI-13",
+          "silhouette": "TRACTEUR_6X4",
+          "poc": "M",
+          "duree": 72,
+          "a": 0.882336,
+          "b": 7235.1552,
+          "code": "DTI-13_TRACTEUR_6X4_M_72"
         }
       ]
     },
