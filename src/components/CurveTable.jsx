@@ -174,38 +174,51 @@ export default function CurveTable({ curves, overrides = {}, onResetOverrides })
                       Km total{uniqueDurees.length > 1 ? ` (${duree}m)` : ''}
                     </th>
                   ))}
-                  {visibleCurves.map((c) => (
-                    <th
-                      key={`v-${c.id}`}
-                      className="px-4 py-2 text-right text-xs uppercase tracking-wider text-slate-500 font-semibold border-b border-slate-200 whitespace-nowrap"
-                    >
-                      <div className="inline-flex items-center gap-2 justify-end">
-                        <span className="text-slate-700 normal-case tracking-normal font-medium">{c.name}</span>
-                        <span
-                          className="inline-block w-2.5 h-2.5 rounded-full"
-                          style={{ backgroundColor: c.color }}
-                        />
-                      </div>
-                    </th>
-                  ))}
-                  {visibleCurves.slice(1).map((c, idx) => (
-                    <th
-                      key={`p-${c.id}`}
-                      className={`px-4 py-2 text-right text-xs uppercase tracking-wider text-slate-500 font-semibold border-b border-slate-200 whitespace-nowrap ${
-                        idx === 0 ? 'border-l border-slate-200' : ''
-                      }`}
-                    >
-                      <div className="inline-flex items-center gap-2 justify-end">
-                        <span
-                          className="inline-block w-2.5 h-2.5 rounded-full"
-                          style={{ backgroundColor: c.color }}
-                        />
-                        <span className="text-slate-700 normal-case tracking-normal font-medium">
-                          Δ % vs {visibleCurves[0].name}
-                        </span>
-                      </div>
-                    </th>
-                  ))}
+                  {visibleCurves.map((c) => {
+                    const isModified = !!overrides[c.id];
+                    return (
+                      <th
+                        key={`v-${c.id}`}
+                        className={`px-4 py-2 text-right text-xs uppercase tracking-wider font-semibold border-b border-slate-200 whitespace-nowrap ${
+                          isModified ? 'bg-amber-50 text-amber-700' : 'text-slate-500'
+                        }`}
+                      >
+                        <div className="inline-flex items-center gap-2 justify-end">
+                          <span className="normal-case tracking-normal font-medium">{c.name}</span>
+                          {isModified && (
+                            <span className="text-[9px] bg-amber-200 text-amber-800 rounded px-1 py-0.5 uppercase tracking-wide font-bold">
+                              test
+                            </span>
+                          )}
+                          <span
+                            className="inline-block w-2.5 h-2.5 rounded-full"
+                            style={{ backgroundColor: c.color }}
+                          />
+                        </div>
+                      </th>
+                    );
+                  })}
+                  {visibleCurves.slice(1).map((c, idx) => {
+                    const isModified = !!overrides[c.id] || !!overrides[visibleCurves[0].id];
+                    return (
+                      <th
+                        key={`p-${c.id}`}
+                        className={`px-4 py-2 text-right text-xs uppercase tracking-wider font-semibold border-b border-slate-200 whitespace-nowrap ${
+                          isModified ? 'bg-amber-50 text-amber-700' : 'text-slate-500'
+                        } ${idx === 0 ? 'border-l border-slate-200' : ''}`}
+                      >
+                        <div className="inline-flex items-center gap-2 justify-end">
+                          <span
+                            className="inline-block w-2.5 h-2.5 rounded-full"
+                            style={{ backgroundColor: c.color }}
+                          />
+                          <span className="normal-case tracking-normal font-medium">
+                            Δ % vs {visibleCurves[0].name}
+                          </span>
+                        </div>
+                      </th>
+                    );
+                  })}
                 </tr>
               </thead>
               <tbody>
@@ -225,16 +238,22 @@ export default function CurveTable({ curves, overrides = {}, onResetOverrides })
                         {fmtKm(r.km * duree)}
                       </td>
                     ))}
-                    {visibleCurves.map((c) => (
-                      <td
-                        key={`v-${c.id}`}
-                        className="px-4 py-1.5 text-right text-slate-800 font-mono border-b border-slate-100 whitespace-nowrap"
-                      >
-                        {fmtEur(r[c.id])}
-                      </td>
-                    ))}
+                    {visibleCurves.map((c) => {
+                      const isModified = !!overrides[c.id];
+                      return (
+                        <td
+                          key={`v-${c.id}`}
+                          className={`px-4 py-1.5 text-right font-mono border-b border-slate-100 whitespace-nowrap ${
+                            isModified ? 'bg-amber-50 text-amber-800' : 'text-slate-800'
+                          }`}
+                        >
+                          {fmtEur(r[c.id])}
+                        </td>
+                      );
+                    })}
                     {visibleCurves.slice(1).map((c, j) => {
                       const v = deltas[i][c.id];
+                      const isModified = !!overrides[c.id] || !!overrides[visibleCurves[0].id];
                       const cls =
                         v == null
                           ? 'text-slate-300'
@@ -247,8 +266,8 @@ export default function CurveTable({ curves, overrides = {}, onResetOverrides })
                         <td
                           key={`p-${c.id}`}
                           className={`px-4 py-1.5 text-right font-mono border-b border-slate-100 whitespace-nowrap ${cls} ${
-                            j === 0 ? 'border-l border-slate-200' : ''
-                          }`}
+                            isModified ? 'bg-amber-50' : ''
+                          } ${j === 0 ? 'border-l border-slate-200' : ''}`}
                         >
                           {fmtPct(v)}
                         </td>
