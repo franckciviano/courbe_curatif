@@ -76,11 +76,13 @@ function downloadCsv(filename, rows, deltas, visible, uniqueDurees) {
   URL.revokeObjectURL(url);
 }
 
-export default function CurveTable({ curves }) {
+export default function CurveTable({ curves, overrides = {}, onResetOverrides }) {
+  const hasOverrides = Object.keys(overrides).length > 0;
+
   // Force rows up to KM_MAX, ignoring the 800 000 km contract cap
   const { rows, visible } = useMemo(
-    () => buildMergedSeries(curves, KM_MIN, KM_STEP, {}, KM_MAX, true),
-    [curves]
+    () => buildMergedSeries(curves, KM_MIN, KM_STEP, overrides, KM_MAX, true),
+    [curves, overrides]
   );
 
   const visibleCurves = visible || [];
@@ -104,6 +106,23 @@ export default function CurveTable({ curves }) {
 
   return (
     <div className="h-full w-full flex flex-col gap-3 min-h-0">
+      {/* Override banner */}
+      {hasOverrides && (
+        <div className="shrink-0 flex items-center justify-between gap-3 bg-amber-50 border border-amber-200 rounded-xl px-4 py-2.5 shadow-sm">
+          <div className="flex items-center gap-2 text-sm text-amber-700">
+            <span className="font-semibold">⚠ Coefficients modifiés</span>
+            <span className="text-amber-600 text-xs">— les prix affichés reflètent vos modifications de test</span>
+          </div>
+          <button
+            type="button"
+            onClick={onResetOverrides}
+            className="text-xs px-3 py-1.5 rounded-lg bg-white border border-amber-300 text-amber-700 hover:bg-amber-100 transition-colors font-medium shrink-0"
+          >
+            ↩ Réinitialiser aux valeurs officielles
+          </button>
+        </div>
+      )}
+
       {/* Toolbar */}
       <div className="shrink-0 flex items-center justify-between gap-3 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 shadow-sm">
         <div className="text-sm text-slate-600">

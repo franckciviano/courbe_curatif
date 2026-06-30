@@ -61,6 +61,37 @@ const INITIAL_CURVES = [
 export default function App() {
   const [curves, setCurves] = useState(INITIAL_CURVES);
   const [tab, setTab] = useState('chart');
+  const [rawOverrides, setRawOverrides] = useState({});
+
+  const setField = useCallback((curveId, field, value) => {
+    setRawOverrides((prev) => ({
+      ...prev,
+      [curveId]: { ...(prev[curveId] || {}), [field]: value },
+    }));
+  }, []);
+
+  const resetCurve = useCallback((curveId) => {
+    setRawOverrides((prev) => {
+      const next = { ...prev };
+      delete next[curveId];
+      return next;
+    });
+  }, []);
+
+  const resetAllOverrides = useCallback(() => setRawOverrides({}), []);
+
+  const parsedOverrides = useMemo(() => {
+    const result = {};
+    for (const [id, fields] of Object.entries(rawOverrides)) {
+      const parsed = {};
+      for (const [k, v] of Object.entries(fields)) {
+        const n = parseFloat(v);
+        if (!isNaN(n)) parsed[k] = n;
+      }
+      if (Object.keys(parsed).length > 0) result[id] = parsed;
+    }
+    return result;
+  }, [rawOverrides]);
 
   const addCurve = useCallback(() => {
     setCurves((prev) => {
@@ -185,8 +216,24 @@ export default function App() {
 
         {/* Main view */}
         <main className="flex-1 min-w-0 p-4 flex flex-col gap-3 min-h-0">
-          {tab === 'chart' && <ChartTabContent curves={curves} onToggleVisible={toggleVisible} />}
-          {tab === 'table' && <CurveTable curves={curves} />}
+          {tab === 'chart' && (
+            <ChartTabContent
+              curves={curves}
+              onToggleVisible={toggleVisible}
+              rawOverrides={rawOverrides}
+              setField={setField}
+              resetCurve={resetCurve}
+              resetAllOverrides={resetAllOverrides}
+              parsedOverrides={parsedOverrides}
+            />
+          )}
+          {tab === 'table' && (
+            <CurveTable
+              curves={curves}
+              overrides={parsedOverrides}
+              onResetOverrides={resetAllOverrides}
+            />
+          )}
           {tab === 'coefs' && <CoefficientsView />}
         </main>
       </div>
@@ -194,38 +241,9 @@ export default function App() {
   );
 }
 
-function ChartTabContent({ curves, onToggleVisible }) {
-  const [rawOverrides, setRawOverrides] = useState({});
-
-  const setField = (curveId, field, value) => {
-    setRawOverrides((prev) => ({
-      ...prev,
-      [curveId]: { ...(prev[curveId] || {}), [field]: value },
-    }));
-  };
-
-  const resetCurve = (curveId) => {
-    setRawOverrides((prev) => {
-      const next = { ...prev };
-      delete next[curveId];
-      return next;
-    });
-  };
-
-  const parsedOverrides = useMemo(() => {
-    const result = {};
-    for (const [id, fields] of Object.entries(rawOverrides)) {
-      const parsed = {};
-      for (const [k, v] of Object.entries(fields)) {
-        const n = parseFloat(v);
-        if (!isNaN(n)) parsed[k] = n;
-      }
-      if (Object.keys(parsed).length > 0) result[id] = parsed;
-    }
-    return result;
-  }, [rawOverrides]);
-
+function ChartTabContent({ curves, onToggleVisible, rawOverrides, setField, resetCurve, resetAllOverrides, parsedOverrides }) {
   const visibleCurves = curves.filter((c) => c.visible);
+  const hasAnyOverride = Object.keys(rawOverrides).length > 0;
 
   const coefInputClass =
     'w-full bg-white border border-slate-300 rounded px-2 py-0.5 text-xs font-mono text-slate-800 ' +
@@ -239,9 +257,20 @@ function ChartTabContent({ curves, onToggleVisible }) {
           <div className="text-xs uppercase tracking-wider text-slate-500 font-semibold">
             Coefficients a / b / c
           </div>
-          <span className="text-[11px] text-amber-600 italic">
-            Modifiables pour test — ne change pas les coefficients officiels
-          </span>
+          <div className="flex items-center gap-3">
+            {hasAnyOverride && (
+              <button
+                type="button"
+                onClick={resetAllOverrides}
+                className="text-xs px-2.5 py-1 rounded-lg bg-amber-50 border border-amber-300 text-amber-700 hover:bg-amber-100 transition-colors font-medium"
+              >
+                ↩ Réinitialiser aux valeurs officielles
+              </button>
+            )}
+            <span className="text-[11px] text-amber-600 italic">
+              Modifiables pour test — ne change pas les coefficients officiels
+            </span>
+          </div>
         </div>
         {visibleCurves.length === 0 ? (
           <p className="text-xs text-slate-400">Aucune courbe visible.</p>
