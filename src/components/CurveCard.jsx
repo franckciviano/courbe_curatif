@@ -10,7 +10,7 @@ import {
 
 const fmtEur = (v) =>
   v == null || Number.isNaN(v)
-    ? '—'
+    ? '-'
     : new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(Math.round(v)) + ' €';
 const fmtKm = (v) => new Intl.NumberFormat('fr-FR').format(Math.round(v));
 
@@ -136,7 +136,7 @@ export default function CurveCard({ curve, onChange, onRemove, onDuplicate }) {
             value={curve.gamme || ''}
             onChange={(e) => update({ gamme: e.target.value })}
           >
-            <option value="">—</option>
+            <option value="">-</option>
             {gammeNames.map((g) => (
               <option key={g} value={g}>{g}</option>
             ))}
@@ -151,7 +151,7 @@ export default function CurveCard({ curve, onChange, onRemove, onDuplicate }) {
             disabled={!curve.gamme || opts.classification.length === 0}
             onChange={(e) => update({ classification: e.target.value || null })}
           >
-            <option value="">—</option>
+            <option value="">-</option>
             {opts.classification.map((v) => (
               <option key={v} value={v}>{v}</option>
             ))}
@@ -166,7 +166,7 @@ export default function CurveCard({ curve, onChange, onRemove, onDuplicate }) {
             disabled={!curve.classification || opts.silhouette.length === 0}
             onChange={(e) => update({ silhouette: e.target.value || null })}
           >
-            <option value="">—</option>
+            <option value="">-</option>
             {opts.silhouette.map((v) => (
               <option key={v} value={v}>{v}</option>
             ))}
@@ -181,7 +181,7 @@ export default function CurveCard({ curve, onChange, onRemove, onDuplicate }) {
             disabled={!curve.silhouette || opts.poc.length === 0}
             onChange={(e) => update({ poc: e.target.value || null })}
           >
-            <option value="">—</option>
+            <option value="">-</option>
             {opts.poc.map((v) => (
               <option key={v} value={v}>{v}</option>
             ))}
@@ -196,7 +196,7 @@ export default function CurveCard({ curve, onChange, onRemove, onDuplicate }) {
             disabled={!curve.poc || opts.duree.length === 0}
             onChange={(e) => update({ duree: e.target.value ? Number(e.target.value) : null })}
           >
-            <option value="">—</option>
+            <option value="">-</option>
             {opts.duree.map((v) => (
               <option key={v} value={v}>{v}</option>
             ))}
@@ -239,7 +239,7 @@ export default function CurveCard({ curve, onChange, onRemove, onDuplicate }) {
           <div className="shrink-0 min-w-[110px] text-right">
             <div className="text-[10px] text-slate-400 uppercase tracking-wide">Curatif</div>
             <div className={`text-base font-semibold ${estimate && estimate.over ? 'text-amber-600' : 'text-violet-700'}`}>
-              {estimate ? fmtEur(estimate.value) : '—'}
+              {estimate ? fmtEur(estimate.value) : '-'}
             </div>
           </div>
         </div>

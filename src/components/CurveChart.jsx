@@ -16,7 +16,7 @@ const KM_STEP = 200;
 
 const fmtEur = (v) =>
   v == null || Number.isNaN(v)
-    ? '—'
+    ? '-'
     : new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(Math.round(v)) + ' €';
 
 const fmtKm = (v) => new Intl.NumberFormat('fr-FR').format(Math.round(v));
@@ -128,7 +128,7 @@ export default function CurveChart({ curves, onToggleVisible, overrides = {} }) 
   if (!visible || visible.length === 0) {
     return (
       <div className="h-full w-full flex items-center justify-center text-slate-400 text-sm">
-        Aucune courbe visible — ajoutez ou cochez une courbe pour commencer.
+        Aucune courbe visible · ajoutez ou cochez une courbe pour commencer.
       </div>
     );
   }

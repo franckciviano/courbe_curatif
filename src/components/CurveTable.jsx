@@ -111,7 +111,7 @@ export default function CurveTable({ curves, overrides = {}, onResetOverrides })
         <div className="shrink-0 flex items-center justify-between gap-3 bg-amber-50 border border-amber-200 rounded-xl px-4 py-2.5 shadow-sm">
           <div className="flex items-center gap-2 text-sm text-amber-700">
             <span className="font-semibold">⚠ Coefficients modifiés</span>
-            <span className="text-amber-600 text-xs">— les prix affichés reflètent vos modifications de test</span>
+            <span className="text-amber-600 text-xs">· les prix affichés reflètent vos modifications de test</span>
           </div>
           <button
             type="button"

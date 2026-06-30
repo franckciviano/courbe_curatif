@@ -8,7 +8,7 @@ import { autoCurveName, findEntry, getGamme, isLinearGamme } from './lib/calc.js
 
 const fmtCoef = (v) =>
   v == null
-    ? '—'
+    ? '-'
     : new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 6 }).format(v);
 
 let _id = 0;
@@ -181,7 +181,7 @@ export default function App() {
 
         <div className="flex items-center gap-2 text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-full shrink-0">
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          Mode local — aucune donnée transmise
+          Mode local · aucune donnée transmise
         </div>
       </header>
 
@@ -268,7 +268,7 @@ function ChartTabContent({ curves, onToggleVisible, rawOverrides, setField, rese
               </button>
             )}
             <span className="text-[11px] text-amber-600 italic">
-              Modifiables pour test — ne change pas les coefficients officiels
+              Modifiables pour test · ne change pas les coefficients officiels
             </span>
           </div>
         </div>

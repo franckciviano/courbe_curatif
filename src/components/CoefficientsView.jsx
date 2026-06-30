@@ -132,7 +132,7 @@ function exportAllCoefficients() {
 
 const fmtCoef = (v) =>
   v == null
-    ? '—'
+    ? '-'
     : new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 6 }).format(v);
 
 const ALL = '__ALL__';
