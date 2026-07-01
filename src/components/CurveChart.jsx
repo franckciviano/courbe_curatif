@@ -136,7 +136,7 @@ export default function CurveChart({ curves, onToggleVisible, overrides = {} }) 
   return (
     <div className="h-full w-full">
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={rows} margin={{ top: 20, right: 30, bottom: 40, left: 70 }}>
+        <LineChart data={rows} margin={{ top: 20, right: 50, bottom: 30, left: 90 }}>
           <CartesianGrid stroke="rgba(100,116,139,0.15)" strokeDasharray="3 3" />
           <XAxis
             dataKey="km"
@@ -148,8 +148,8 @@ export default function CurveChart({ curves, onToggleVisible, overrides = {} }) 
             stroke="#cbd5e1"
             label={{
               value: 'Km / mois',
-              position: 'insideBottom',
-              offset: -20,
+              position: 'insideBottomRight',
+              offset: 0,
               fill: '#64748b',
               fontSize: 12,
             }}
@@ -160,7 +160,15 @@ export default function CurveChart({ curves, onToggleVisible, overrides = {} }) 
             tick={{ fill: '#64748b', fontSize: 11 }}
             tickFormatter={(v) => fmtEur(v)}
             stroke="#cbd5e1"
-            width={80}
+            width={90}
+            label={{
+              value: 'Somme repair',
+              angle: -90,
+              position: 'insideLeft',
+              offset: 10,
+              fill: '#64748b',
+              fontSize: 12,
+            }}
           />
           <Tooltip
             content={<CustomTooltip curves={curves} />}
